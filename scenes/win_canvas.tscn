@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c82gvr2i46sbi"]
+
+[ext_resource type="Script" path="res://scripts/win_canvas.gd" id="1_pkkek"]
+[ext_resource type="LabelSettings" path="res://themes/label_settings_title.tres" id="2_8wuj5"]
+
+[node name="win_canvas" type="CanvasLayer"]
+script = ExtResource("1_pkkek")
+
+[node name="text" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="text"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.5
+offset_right = 247.5
+offset_bottom = 269.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 90
+
+[node name="Label" type="Label" parent="text/MarginContainer"]
+layout_mode = 2
+text = "Congratulations
+you won"
+label_settings = ExtResource("2_8wuj5")
+horizontal_alignment = 1

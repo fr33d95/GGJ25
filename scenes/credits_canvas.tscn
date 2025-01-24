@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnfck5i7gajkb"]
+
+[ext_resource type="LabelSettings" path="res://themes/label_settings_title.tres" id="1_4qsmb"]
+[ext_resource type="Script" path="res://scripts/credits_canvas.gd" id="1_ir165"]
+[ext_resource type="LabelSettings" path="res://themes/label_settings_credits_name.tres" id="2_rciqv"]
+[ext_resource type="LabelSettings" path="res://themes/label_settings_credits_task.tres" id="3_perfh"]
+
+[node name="credits_canvas" type="CanvasLayer"]
+script = ExtResource("1_ir165")
+
+[node name="text" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="text"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.5
+offset_right = 247.5
+offset_bottom = 179.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 90
+
+[node name="VBoxContainer" type="VBoxContainer" parent="text/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="title" type="Label" parent="text/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+label_settings = ExtResource("1_4qsmb")
+horizontal_alignment = 1
+
+[node name="people" type="HBoxContainer" parent="text/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="person" type="VBoxContainer" parent="text/MarginContainer/VBoxContainer/people"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="text/MarginContainer/VBoxContainer/people/person"]
+layout_mode = 2
+text = "Name"
+label_settings = ExtResource("2_rciqv")
+
+[node name="MarginContainer" type="MarginContainer" parent="text/MarginContainer/VBoxContainer/people/person"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="task" type="Label" parent="text/MarginContainer/VBoxContainer/people/person/MarginContainer"]
+layout_mode = 2
+text = "| task
+"
+label_settings = ExtResource("3_perfh")
