@@ -1,0 +1,85 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cl2eewtfxn63x"]
+
+[ext_resource type="Texture2D" uid="uid://cqqx4c3u8orrq" path="res://art/spritesheet_tubii.png" id="1_vqutc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baqg2"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afr17"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn885"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvok7"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(0, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7pvo"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5daf"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i3ly"]
+atlas = ExtResource("1_vqutc")
+region = Rect2(100, 0, 100, 100)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baqg2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afr17")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn885")
+}],
+"loop": true,
+"name": &"fight_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvok7")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7pvo")
+}],
+"loop": true,
+"name": &"suffocate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5daf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i3ly")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]

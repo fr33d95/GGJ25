@@ -4,6 +4,8 @@ builds/
 # tmp
 *.tmp
 
+*.png~
+
 # Godot-specific ignores
 .import/
 export.cfg

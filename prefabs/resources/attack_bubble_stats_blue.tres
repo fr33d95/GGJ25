@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AttackBubbleStats" load_steps=3 format=3 uid="uid://bvdof1gag5y08"]
+
+[ext_resource type="Script" path="res://scripts/attack_bubble_stats.gd" id="1_80fna"]
+[ext_resource type="SpriteFrames" uid="uid://o6m457ekmoqh" path="res://anim/attack_bubbles.tres" id="2_mujqy"]
+
+[resource]
+script = ExtResource("1_80fna")
+sprite_frames = ExtResource("2_mujqy")
+attack_bubble_type = 1
+speed = 10.0

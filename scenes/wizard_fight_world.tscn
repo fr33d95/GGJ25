@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bltrbd3dxdj8j"]
+
+[ext_resource type="Script" path="res://scripts/wizard_fight_world.gd" id="1_wyqjj"]
+[ext_resource type="PackedScene" uid="uid://bnnr3nu4mntx1" path="res://prefabs/wizard.tscn" id="2_prq4b"]
+[ext_resource type="PackedScene" uid="uid://ds6hie2eixwyp" path="res://prefabs/character_fighter.tscn" id="3_pnnn8"]
+
+[node name="wizard_fight_world" type="Node2D"]
+script = ExtResource("1_wyqjj")
+
+[node name="wizard" parent="." instance=ExtResource("2_prq4b")]
+position = Vector2(863, 496)
+
+[node name="character_fighter" parent="." instance=ExtResource("3_pnnn8")]
+position = Vector2(222, 504)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcoavoju561wf"
-path="res://.godot/imported/spritesheet_tubii.png-2a2a80b975a711296431bdfab6b7f8ed.ctex"
+uid="uid://duecxlf05no3m"
+path="res://.godot/imported/icon.png-c3d958876317c5b9ff9d73fef1b6123f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/spritesheet_tubii.png"
-dest_files=["res://.godot/imported/spritesheet_tubii.png-2a2a80b975a711296431bdfab6b7f8ed.ctex"]
+source_file="res://art/icon.png"
+dest_files=["res://.godot/imported/icon.png-c3d958876317c5b9ff9d73fef1b6123f.ctex"]
 
 [params]
 
