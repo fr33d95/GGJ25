@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cds01lpxp8wcc"]
+
+[ext_resource type="Script" path="res://scripts/o_2_bubble.gd" id="1_6lyfh"]
+[ext_resource type="Texture2D" uid="uid://ct7k4jxiy7lsc" path="res://art/test/poop.png" id="2_cr08b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uoyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cr08b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5p17"]
+radius = 37.0135
+
+[node name="upwards_bubble" type="RigidBody2D" groups=["upwards_bubbles"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_6lyfh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["upwards_bubbles"]]
+scale = Vector2(0.12, 0.12)
+sprite_frames = SubResource("SpriteFrames_3uoyo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e5p17")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

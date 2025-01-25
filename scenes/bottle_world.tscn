@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://vr4abtws04v4"]
+
+[ext_resource type="Script" path="res://scripts/bottle_world.gd" id="1_gn8dh"]
+[ext_resource type="Texture2D" uid="uid://d2rojsuqeroa2" path="res://art/test/sky.jpg" id="1_rp4ho"]
+[ext_resource type="PackedScene" uid="uid://s3k1nc43q6st" path="res://scenes/o2_bubble.tscn" id="2_4nhv4"]
+[ext_resource type="Texture2D" uid="uid://b64p7m64rd1dv" path="res://art/test/brickwall.jpg" id="2_oikbo"]
+[ext_resource type="PackedScene" uid="uid://cds01lpxp8wcc" path="res://scenes/upwards_bubble.tscn" id="3_08umx"]
+
+[sub_resource type="Curve2D" id="Curve2D_enmn6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 360, 710, 0, 0, 0, 0, 960, 710)
+}
+point_count = 2
+
+[node name="BottleWorld" type="Node2D"]
+script = ExtResource("1_gn8dh")
+o2_bubble_scene = ExtResource("2_4nhv4")
+upwards_bubble_scene = ExtResource("3_08umx")
+metadata/_edit_group_ = true
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.33, 0.33)
+motion_mirroring = Vector2(0, 700)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background/Background"]
+position = Vector2(640, 356)
+scale = Vector2(0.666667, 0.370833)
+texture = ExtResource("1_rp4ho")
+
+[node name="BottleBackground" type="ParallaxBackground" parent="."]
+
+[node name="Bottle" type="ParallaxLayer" parent="BottleBackground"]
+motion_mirroring = Vector2(0, 700)
+
+[node name="BottleSprite" type="Sprite2D" parent="BottleBackground/Bottle"]
+position = Vector2(658, 356)
+scale = Vector2(0.339583, 0.370833)
+texture = ExtResource("2_oikbo")
+region_rect = Rect2(200, 100, 500, 600)
+
+[node name="DepthTimer" type="Timer" parent="."]
+
+[node name="BubbleSpawner" type="Path2D" parent="."]
+curve = SubResource("Curve2D_enmn6")
+
+[node name="BubbleSpawnerLocation" type="PathFollow2D" parent="BubbleSpawner"]
+position = Vector2(360, 710)
+
+[node name="O2_BubbleSpawner" type="Timer" parent="."]
+wait_time = 3.5
+
+[node name="Upwards_Bubble_Spawner" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Upwards_Hit_Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DepthTimer" to="." method="_on_depth_timer_timeout"]
+[connection signal="timeout" from="O2_BubbleSpawner" to="." method="_on_o_2_bubble_spawner_timeout"]
+[connection signal="timeout" from="Upwards_Bubble_Spawner" to="." method="_on_upwards_bubble_spawner_timeout"]
+[connection signal="timeout" from="Upwards_Hit_Timer" to="." method="_on_upwards_hit_timer_timeout"]
