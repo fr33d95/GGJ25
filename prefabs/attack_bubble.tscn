@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ca4rpme7ri7eb"]
 
 [ext_resource type="Script" path="res://scripts/attack_bubble.gd" id="1_f8tth"]
-[ext_resource type="Texture2D" uid="uid://dqnl0ra010pwq" path="res://art/test/test_bubble.png" id="2_q8f8t"]
+[ext_resource type="SpriteFrames" uid="uid://o6m457ekmoqh" path="res://anim/attack_bubbles.tres" id="2_tp46y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn84s"]
 size = Vector2(128, 128)
@@ -9,14 +9,15 @@ size = Vector2(128, 128)
 [node name="attack_bubble" type="Area2D"]
 script = ExtResource("1_f8tth")
 
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_tp46y")
+animation = &"explode"
+frame_progress = 0.699939
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fn84s")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.5, 0.5)
-scale = Vector2(1.02344, 0.992188)
-texture = ExtResource("2_q8f8t")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

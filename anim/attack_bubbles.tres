@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://o6m457ekmoqh"]
+
+[ext_resource type="Texture2D" uid="uid://dqnl0ra010pwq" path="res://art/test/test_bubble.png" id="1_ng2c3"]
+[ext_resource type="Texture2D" uid="uid://bje1ptsacxu7a" path="res://art/test/test_bubble2.png" id="2_n6x4e"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ng2c3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n6x4e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ng2c3")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]

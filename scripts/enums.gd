@@ -7,4 +7,4 @@ extends Node
 enum AttackBubbleType { Red, Blue, Green, None } 
 
 # shot sources
-enum ShotSource { ShotWizzard, ShotCharacter, None }
+enum ShotSource { ShotWizard, ShotCharacter, None }
