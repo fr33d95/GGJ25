@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c82gvr2i46sbi"]
 
 [ext_resource type="Script" path="res://scripts/win_canvas.gd" id="1_pkkek"]
-[ext_resource type="LabelSettings" path="res://themes/label_settings_title.tres" id="2_8wuj5"]
+[ext_resource type="LabelSettings" uid="uid://6630muvpww20" path="res://themes/label_settings_title.tres" id="2_8wuj5"]
 
 [node name="win_canvas" type="CanvasLayer"]
 script = ExtResource("1_pkkek")

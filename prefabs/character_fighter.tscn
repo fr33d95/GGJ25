@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds6hie2eixwyp"]
+
+[ext_resource type="Script" path="res://scripts/character_fighter.gd" id="1_tugwc"]
+[ext_resource type="Texture2D" uid="uid://bwg3b2vb2s7jm" path="res://art/test/test_char.png" id="2_5w234"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4gym"]
+size = Vector2(128, 128)
+
+[node name="character_fighter" type="Area2D"]
+script = ExtResource("1_tugwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q4gym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5w234")

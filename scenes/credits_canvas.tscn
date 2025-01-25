@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnfck5i7gajkb"]
 
-[ext_resource type="LabelSettings" path="res://themes/label_settings_title.tres" id="1_4qsmb"]
+[ext_resource type="LabelSettings" uid="uid://6630muvpww20" path="res://themes/label_settings_title.tres" id="1_4qsmb"]
 [ext_resource type="Script" path="res://scripts/credits_canvas.gd" id="1_ir165"]
-[ext_resource type="LabelSettings" path="res://themes/label_settings_credits_name.tres" id="2_rciqv"]
-[ext_resource type="LabelSettings" path="res://themes/label_settings_credits_task.tres" id="3_perfh"]
+[ext_resource type="LabelSettings" uid="uid://ctwmp3hsvi0mx" path="res://themes/label_settings_credits_name.tres" id="2_rciqv"]
+[ext_resource type="LabelSettings" uid="uid://p2q0rftaa7qv" path="res://themes/label_settings_credits_task.tres" id="3_perfh"]
 
 [node name="credits_canvas" type="CanvasLayer"]
 script = ExtResource("1_ir165")

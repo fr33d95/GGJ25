@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnnr3nu4mntx1"]
+
+[ext_resource type="Script" path="res://scripts/wizzard.gd" id="1_2b7e2"]
+[ext_resource type="PackedScene" uid="uid://ca4rpme7ri7eb" path="res://prefabs/attack_bubble.tscn" id="2_h6ssr"]
+[ext_resource type="Texture2D" uid="uid://dltnqgc0seb7c" path="res://art/test/test_wiz.png" id="2_pb5qh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj6pm"]
+size = Vector2(128, 128)
+
+[node name="wizzard" type="Area2D"]
+script = ExtResource("1_2b7e2")
+attack_bubble_scene = ExtResource("2_h6ssr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pb5qh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vj6pm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
