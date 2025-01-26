@@ -9,6 +9,7 @@ class_name AttackBubble extends Area2D
 # vars
 var type: Enums.AttackBubbleType
 var speed: float = 25.0
+var explode_speed: float = 10.0
 var shot_direction: int = 1
 var shot_source: Enums.ShotSource = Enums.ShotSource.None
 
@@ -61,6 +62,9 @@ func set_stats(new_stats: AttackBubbleStats, target_shot_source: Enums.ShotSourc
 
 func update_bubble_movement() -> Vector2:
 
+	# explodes
+	if is_exploding: return Vector2(explode_speed * shot_direction, 0.0)
+
 	# simple update
 	return speed * Vector2(speed * shot_direction, 0.0)
 
@@ -91,6 +95,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is CharacterFighter: return
 	if area is Wizard: return
 	if area.shot_source == self.shot_source: return
+	if is_exploding: return
 
 	# destroy both condition
 	var destroy_both: bool = false

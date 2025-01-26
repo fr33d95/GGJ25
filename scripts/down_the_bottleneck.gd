@@ -108,6 +108,8 @@ func start_fight_world():
 
 	# make signal connections
 	wizard_fight_world.fight_is_now_over_go_up.connect(self.start_up_the_bottle)
+	# todo:
+	#wizard_fight_world.fight_is_now_over_but_you_lost.connect()
 
 	# todo:
 	# overwrite stats

@@ -23,10 +23,10 @@ signal the_evil_wizard_is_dead
 
 # vars
 var is_dead: bool = false
+var is_dying: bool = false
 var is_invincible: bool = false
 var num_hits: int = 0
 var cooldown_timer: Timer = null
-
 var actual_anim_state = null
 
 # const anim
@@ -38,25 +38,13 @@ const anim_die = &"die"
 
 func _ready() -> void:
 
-	# reset characer
-	self.reset()
-
-
-func _process(_delta: float) -> void:
-
-	# test
-	# if Input.is_action_just_pressed("test_shot"): spawn_attack_bubble(Enums.AttackBubbleType.None)
-	# if Input.is_action_just_pressed("test_shot_wiz_red"): spawn_attack_bubble(Enums.AttackBubbleType.Red)
-	# if Input.is_action_just_pressed("test_shot_wiz_green"): spawn_attack_bubble(Enums.AttackBubbleType.Green)
-	# if Input.is_action_just_pressed("test_shot_wiz_blue"): spawn_attack_bubble(Enums.AttackBubbleType.Blue)
-
-	# auto attack
-	self.auto_attack_update()
-
-
-func reset() -> void:
+	# number of hits
 	num_hits = 0
+
+	# dead flag
 	is_dead = false
+	is_dying = false
+	is_invincible = false
 
 	# look animation
 	anim.set_animation(anim_fight_idle)
@@ -68,10 +56,17 @@ func reset() -> void:
 	actual_anim_state = anim_fight_idle
 
 
+func _process(_delta: float) -> void:
+
+	# auto attack
+	self.auto_attack_update()
+
+
 func auto_attack_update():
 
 	# returns
 	if is_dead: return
+	if is_dying: return
 
 	# still bubbles
 	if attack_bubble_container.get_child_count(): return
@@ -97,6 +92,10 @@ func start_cooldown_timer():
 
 func spawn_attack_bubble(bubble_id: Enums.AttackBubbleType) -> void:
 	
+	# returns
+	if is_dead: return
+	if is_dying: return
+
 	assert(bubble_id <= Enums.AttackBubbleType.None)
 
 	# set id
@@ -125,6 +124,7 @@ func hit():
 
 	# returns
 	if is_dead: return
+	if is_dying: return
 	if is_invincible: 
 		print("wizard is invincible")
 		return
@@ -139,15 +139,6 @@ func hit():
 	is_invincible = true
 	invincible_timer.start()
 
-	# hit animation
-	anim.set_animation(anim_hit)
-
-	# play animation
-	anim.play()
-
-	# anim state
-	actual_anim_state = anim_hit
-
 	# death
 	if num_hits >= max_hits: 
 
@@ -161,10 +152,21 @@ func hit():
 		actual_anim_state = anim_die
 
 		# death
-		is_dead = true
+		is_dying = true
 
 		# start death timer
 		death_timer.start()
+
+		return
+
+	# hit animation
+	anim.set_animation(anim_hit)
+
+	# play animation
+	anim.play()
+
+	# anim state
+	actual_anim_state = anim_hit
 
 
 # --
@@ -194,6 +196,7 @@ func _on_death_timer_timeout() -> void:
 	# dead emit
 	print("death of wizard after timer")
 	the_evil_wizard_is_dead.emit()
+	is_dead = true
 
 
 func _on_invincible_timer_timeout() -> void:
@@ -204,6 +207,7 @@ func _on_invincible_timer_timeout() -> void:
 func _on_anim_animation_finished() -> void:
 
 	# returns
+	if is_dead: return
 	if actual_anim_state == anim_fight_idle: return
 	if actual_anim_state == anim_die: return
 
