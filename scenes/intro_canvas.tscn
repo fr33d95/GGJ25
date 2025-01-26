@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7m5pd53heqxl"]
+
+[ext_resource type="Texture2D" uid="uid://c22xtoihecqm0" path="res://art/Intro_frame_10.png" id="1_047jv"]
+[ext_resource type="Script" path="res://scripts/intro_canvas.gd" id="1_arpei"]
+
+[node name="introCanvas" type="CanvasLayer"]
+script = ExtResource("1_arpei")
+
+[node name="text" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="text"]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_047jv")
+
+[node name="auto_exit" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="auto_exit" to="." method="_on_auto_exit_timeout"]

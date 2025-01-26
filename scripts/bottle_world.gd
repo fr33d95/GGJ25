@@ -12,8 +12,8 @@ signal o2changed(new_value:int)
 @export var bubblespeed_max = 250;
 @export var scrollspeed_offset_upwards_hit = 150;
 @export var o2_depletion_downwards = 1;
-@export var o2_depletion_upwards = 5;
-@export var o2_gain_bubble = 10;
+@export var o2_depletion_upwards = 3;
+@export var o2_gain_bubble = 15;
 @export var depth_decrease_hit = 5;
 @export var o2_status = 100;
 
@@ -151,6 +151,8 @@ func lose_emit():
 func updateO2(gain: int):
 	o2_status += gain;
 	print(o2_status)
+	if(o2_status > 100): o2_status = 100;
+	if (o2_status <0): o2_status = 0;
 	O2_emit();
 	if(o2_status<=0 && not losing_state):
 		losing();

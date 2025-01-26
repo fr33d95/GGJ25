@@ -17,7 +17,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -28,7 +28,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5p17"]
@@ -41,9 +41,9 @@ script = ExtResource("1_6lyfh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["upwards_bubbles"]]
 sprite_frames = SubResource("SpriteFrames_3uoyo")
-animation = &"hit"
+animation = &"move"
 autoplay = "move"
-speed_scale = 0.6
+frame_progress = 0.556039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

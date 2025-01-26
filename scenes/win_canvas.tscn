@@ -6,14 +6,6 @@
 [node name="win_canvas" type="CanvasLayer"]
 script = ExtResource("1_pkkek")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.155471, 1.98178e-05, 0.158831, 1)
-
 [node name="text" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0

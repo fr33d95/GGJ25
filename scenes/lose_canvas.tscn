@@ -1,20 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddo2ty701tetm"]
+[gd_scene load_steps=3 format=3 uid="uid://dbnb4guvtv708"]
 
 [ext_resource type="Script" path="res://scripts/credits_canvas.gd" id="1_arg0g"]
-[ext_resource type="Texture2D" uid="uid://bb7140r8jtrsj" path="res://art/Loose_screen_oxygen.png" id="2_pqpgx"]
+[ext_resource type="LabelSettings" uid="uid://6630muvpww20" path="res://themes/label_settings_title.tres" id="1_h0qf5"]
 
 [node name="lose_canvas" type="CanvasLayer"]
 script = ExtResource("1_arg0g")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="text" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.155471, 1.98178e-05, 0.158831, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_pqpgx")
+[node name="MarginContainer" type="MarginContainer" parent="text"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.5
+offset_right = 247.5
+offset_bottom = 269.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 90
+
+[node name="Label" type="Label" parent="text/MarginContainer"]
+layout_mode = 2
+text = "Game Over!"
+label_settings = ExtResource("1_h0qf5")
+horizontal_alignment = 1

@@ -8,6 +8,7 @@ var fight_world_scene: PackedScene = preload("res://scenes/wizard_fight_world.ts
 @onready var world = $world
 @onready var title = $title_canvas
 @onready var credits = $credits_canvas
+@onready var intro = $introCanvas
 @onready var win = $win_canvas
 @onready var bgm_down = $bgm_down
 @onready var bgm_wizard_fight = $bgm_wizard_fight
@@ -24,12 +25,13 @@ var is_playing:bool = false
 func _ready() -> void:
 	
 	# signal connections
-	title.start_game.connect(self.start_new_game)
+	title.start_game.connect(self.title_to_intro)
 	title.credits.connect(self.title_to_credits)
 	title.end_game.connect(self.end_game)
 	credits.end_credits.connect(self.credits_to_title)
 	lose.end_credits.connect(self.win_to_credits);
 	win.end_win.connect(self.win_to_credits)
+	intro.end_intro.connect(self.start_new_game)
 
 	# canvas handling
 	title.show()
@@ -37,6 +39,7 @@ func _ready() -> void:
 	credits.hide()
 	lose.hide()
 	hud.hide()
+	intro.hide();
 
 	# play down also in title
 	bgm_down.play()
@@ -96,6 +99,7 @@ func start_new_game():
 	credits.hide()
 	lose.hide()
 	hud.show()
+	intro.hide();
 	
 	# is playing
 	is_playing = true
@@ -168,13 +172,21 @@ func update_hud(new_oxygen_level: int):
 	# update oxygen
 	hud.get_node("Oxygen").set_oxygen_value(new_oxygen_level)
 
-
+func title_to_intro():
+	credits.hide()
+	title.hide()
+	win.hide()
+	lose.hide()
+	hud.hide()
+	intro.show();
+	
 func title_to_credits():
 	credits.show()
 	title.hide()
 	win.hide()
 	lose.hide()
 	hud.hide()
+	intro.hide();
 
 
 func credits_to_title():
@@ -183,6 +195,7 @@ func credits_to_title():
 	win.hide()
 	lose.hide()
 	hud.hide()
+	intro.hide();
 
 
 
@@ -200,6 +213,7 @@ func game_to_title():
 	win.hide()
 	lose.hide()
 	hud.hide()
+	intro.hide();
 
 	# bgm
 	bgm_down.stop()
@@ -225,6 +239,7 @@ func win_game():
 	lose.hide();
 	hud.hide()
 	win.show()
+	intro.hide();
 	
 func lose_game():
 	clean_world()
@@ -233,6 +248,7 @@ func lose_game():
 	hud.hide()
 	lose.show();
 	win.hide()
+	intro.hide();
 
 
 func end_game():

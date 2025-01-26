@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://t0i6libxido2"]
+[gd_scene load_steps=12 format=3 uid="uid://t0i6libxido2"]
 
 [ext_resource type="Script" path="res://scripts/down_the_bottleneck.gd" id="1_71sw5"]
 [ext_resource type="PackedScene" uid="uid://0c8nj0hlr44r" path="res://scenes/title_canvas.tscn" id="1_gkmfn"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dcnro0yxlogrr" path="res://audio/wizard_fight_loop.ogg" id="7_l6a5r"]
 [ext_resource type="AudioStream" uid="uid://dcftanp88x0vm" path="res://audio/up_loop.ogg" id="8_bjnt2"]
 [ext_resource type="PackedScene" uid="uid://cjmp4x4a2k0fe" path="res://scenes/hud.tscn" id="10_los77"]
+[ext_resource type="PackedScene" uid="uid://b7m5pd53heqxl" path="res://scenes/intro_canvas.tscn" id="11_w5td2"]
 
 [node name="down_the_bottleneck" type="Node2D"]
 script = ExtResource("1_71sw5")
@@ -36,3 +37,5 @@ stream = ExtResource("8_bjnt2")
 
 [node name="HUD" parent="." instance=ExtResource("10_los77")]
 visible = false
+
+[node name="introCanvas" parent="." instance=ExtResource("11_w5td2")]
