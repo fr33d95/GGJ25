@@ -21,6 +21,11 @@ signal the_evil_wizard_is_dead
 @onready var invincible_timer: Timer = $invincible_timer
 @onready var attack_bubble_container: Node2D = $attack_bubble_container
 
+@onready var sfx_shoot = $sfx_shoot
+@onready var sfx_hit = $sfx_hit
+@onready var sfx_die = $sfx_die
+
+
 # vars
 var is_dead: bool = false
 var is_dying: bool = false
@@ -119,6 +124,9 @@ func spawn_attack_bubble(bubble_id: Enums.AttackBubbleType) -> void:
 	# anim state
 	actual_anim_state = anim_attack
 
+	# sfx
+	sfx_shoot.play()
+
 
 func hit():
 
@@ -151,6 +159,9 @@ func hit():
 		# anim state
 		actual_anim_state = anim_die
 
+		# sfx
+		sfx_die.play()
+
 		# death
 		is_dying = true
 
@@ -167,6 +178,9 @@ func hit():
 
 	# anim state
 	actual_anim_state = anim_hit
+
+	# sfx
+	sfx_hit.play()
 
 
 # --
