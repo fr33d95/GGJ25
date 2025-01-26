@@ -20,6 +20,9 @@ func overwrite_character_stats(new_stats):
 	character_fighter.set_character_stats(new_stats)
 
 
+func getOxygen():
+	return character_fighter.get_oxygen()
+
 # --
 # signal methods
 

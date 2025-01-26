@@ -154,6 +154,9 @@ func set_character_stats(new_oxygen_level: int):
 	oxygen_level = new_oxygen_level
 
 
+func get_oxygen(): return oxygen_level
+
+
 # --
 # signal methods
 

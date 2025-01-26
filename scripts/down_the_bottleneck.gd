@@ -130,12 +130,18 @@ func start_fight_world():
 
 func start_up_the_bottle():
 
+	# save oxygen
+	var oxygen: int = wizard_fight_world.getOxygen()
+
 	# clean
 	clean_world()
 
 	bottleWorld = main_world.instantiate()
 	# start  with intro
 	world.add_child(bottleWorld)
+
+	# setup
+	bottleWorld.setO2(oxygen)
 	bottleWorld.start_upwards_game()
 	
 	# signal connections
