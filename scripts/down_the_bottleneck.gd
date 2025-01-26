@@ -218,7 +218,7 @@ func bottle_lose_signal():
 func wizard_fight_lose_signal():
 	lose_game()
 func win_game():
-
+	clean_world()
 	# canvas
 	title.hide()
 	credits.hide()

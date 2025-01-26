@@ -3,7 +3,7 @@ signal win(upwards:bool)
 signal lose
 signal o2changed(new_value:int)
 
-@export var depth = 30;
+@export var depth = 40;
 @export var scroll_stop_threshhold = 55;
 @export var o2_bubble_scene: PackedScene;
 @export var upwards_bubble_scene: PackedScene;
@@ -22,6 +22,7 @@ var current_depth = 0;
 var isUpwards = false;
 var isUpwardsHit = false;
 var stopScrolling = false;
+var losing_state = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -151,9 +152,8 @@ func updateO2(gain: int):
 	o2_status += gain;
 	print(o2_status)
 	O2_emit();
-	if(o2_status<=0):
+	if(o2_status<=0 && not losing_state):
 		losing();
-		
 
 func setO2(value: int):
 	o2_status = value;
