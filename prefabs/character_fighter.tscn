@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ds6hie2eixwyp"]
 
 [ext_resource type="Script" path="res://scripts/character_fighter.gd" id="1_tugwc"]
-[ext_resource type="SpriteFrames" uid="uid://cl2eewtfxn63x" path="res://anim/tubii.tres" id="2_078fi"]
+[ext_resource type="SpriteFrames" uid="uid://dcht3m4eddixa" path="res://anim/tubii.tres" id="2_078fi"]
 [ext_resource type="PackedScene" uid="uid://ca4rpme7ri7eb" path="res://prefabs/attack_bubble.tscn" id="2_gkx00"]
 [ext_resource type="Script" path="res://scripts/attack_bubble_stats.gd" id="3_hr454"]
 [ext_resource type="Resource" uid="uid://d2anp18kpymjt" path="res://prefabs/resources/attack_bubble_stats_red.tres" id="4_byxo7"]
