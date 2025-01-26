@@ -6,20 +6,17 @@ var oxygen = 100
 var oxygen_decrease_rate = 1
 var player_is_alive = true
 var player_swims_down = false
-var screen_size = Vector2(1000, 2000) # TODO set initial bottle space
+var screen_size = Vector2(1000, 140) # TODO set initial bottle space
 
 
 func _ready():
 	if player_swims_down:
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.play()
-		position.x = 640
-		position.y = 142
+
 	elif not player_swims_down:
 		$AnimatedSprite2D.flip_v = true
 		$AnimatedSprite2D.play()
-		position.x = 640
-		position.y = 600
 	
 
 func _physics_process(delta):
