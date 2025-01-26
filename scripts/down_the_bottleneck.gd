@@ -88,6 +88,7 @@ func start_new_game():
 	# signal connections
 	bottleWorld.win.connect(bottle_win_signal)
 	bottleWorld.lose.connect(bottle_lose_signal)
+	bottleWorld.o2changed.connect(update_hud)
 
 	# title
 	title.hide()
@@ -140,6 +141,7 @@ func start_up_the_bottle():
 	# signal connections
 	bottleWorld.win.connect(bottle_win_signal)
 	bottleWorld.lose.connect(bottle_lose_signal)
+	bottleWorld.o2changed.connect(update_hud)
 
 	# bgm
 	bgm_wizard_fight.stop()
