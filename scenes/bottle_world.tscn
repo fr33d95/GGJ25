@@ -9,7 +9,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_enmn6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 360, 710, 0, 0, 0, 0, 960, 710)
+"points": PackedVector2Array(0, 0, 0, 0, 360, 725, 0, 0, 0, 0, 960, 725)
 }
 point_count = 2
 
@@ -23,21 +23,19 @@ metadata/_edit_group_ = true
 
 [node name="Background" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.33, 0.33)
-motion_mirroring = Vector2(0, 700)
+motion_mirroring = Vector2(0, 720)
 
 [node name="BackgroundSprite" type="Sprite2D" parent="Background/Background"]
-position = Vector2(640, 356)
-scale = Vector2(0.666667, 0.370833)
+position = Vector2(640, 360)
 texture = ExtResource("4_61p3d")
 
 [node name="BottleBackground" type="ParallaxBackground" parent="."]
 
 [node name="Bottle" type="ParallaxLayer" parent="BottleBackground"]
-motion_mirroring = Vector2(0, 741)
+motion_mirroring = Vector2(0, 719)
 
 [node name="BottleSprite" type="Sprite2D" parent="BottleBackground/Bottle"]
-position = Vector2(658, 356)
-scale = Vector2(0.339583, 0.370833)
+position = Vector2(658, 360)
 texture = ExtResource("5_c7vpc")
 region_rect = Rect2(200, 100, 500, 600)
 
@@ -47,7 +45,7 @@ region_rect = Rect2(200, 100, 500, 600)
 curve = SubResource("Curve2D_enmn6")
 
 [node name="BubbleSpawnerLocation" type="PathFollow2D" parent="BubbleSpawner"]
-position = Vector2(360, 710)
+position = Vector2(360, 725)
 
 [node name="O2_BubbleSpawner" type="Timer" parent="."]
 wait_time = 3.5
@@ -64,3 +62,5 @@ one_shot = true
 [connection signal="timeout" from="O2_BubbleSpawner" to="." method="_on_o_2_bubble_spawner_timeout"]
 [connection signal="timeout" from="Upwards_Bubble_Spawner" to="." method="_on_upwards_bubble_spawner_timeout"]
 [connection signal="timeout" from="Upwards_Hit_Timer" to="." method="_on_upwards_hit_timer_timeout"]
+[connection signal="o2_hit" from="Player" to="." method="o2_hit"]
+[connection signal="upwards_hit" from="Player" to="." method="upwards_hit"]

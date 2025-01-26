@@ -5,6 +5,7 @@ class_name AttackBubble extends Area2D
 
 # refs
 @onready var anim: AnimatedSprite2D = $anim
+@onready var sfx_bubble_explode: = $sfx_bubble_explode
 
 # vars
 var type: Enums.AttackBubbleType
@@ -74,6 +75,9 @@ func destroy_bubble():
 	# look animation
 	anim.set_animation(anim_explode)
 
+	# play sound
+	sfx_bubble_explode.play()
+
 	# play animation
 	anim.play()
 
@@ -117,4 +121,5 @@ func _on_anim_animation_finished() -> void:
 
 	# only for exploding
 	if not is_exploding: return
+	sfx_bubble_explode.stop()
 	queue_free()

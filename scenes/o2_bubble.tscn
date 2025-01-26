@@ -1,21 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://s3k1nc43q6st"]
+[gd_scene load_steps=9 format=3 uid="uid://s3k1nc43q6st"]
 
-[ext_resource type="Texture2D" uid="uid://bg5qr2k5fckl2" path="res://art/test/ball.png" id="1_irjbt"]
 [ext_resource type="Script" path="res://scripts/o_2_bubble.gd" id="1_ug5mm"]
+[ext_resource type="Texture2D" uid="uid://7dk8auojgvua" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_01_idle.png" id="2_67lpf"]
+[ext_resource type="Texture2D" uid="uid://ve6a0tdakesy" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_03-hit.png" id="3_ddh87"]
+[ext_resource type="Texture2D" uid="uid://dv6co3w7616qv" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_04_burst.png" id="4_qf7f2"]
+[ext_resource type="Texture2D" uid="uid://bv414pgygns3l" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_05_fade.png" id="5_661n1"]
+[ext_resource type="Texture2D" uid="uid://cruaxu8unbgq7" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_02_move.png" id="6_mbjhj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ntlbq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_irjbt")
+"texture": ExtResource("2_67lpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ddh87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qf7f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_661n1")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_67lpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mbjhj")
 }],
 "loop": true,
-"name": &"default",
+"name": &"move",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5p17"]
-radius = 37.0135
+radius = 18.0278
 
 [node name="o2_bubble" type="RigidBody2D" groups=["o2_bubbles"]]
 collision_mask = 0
@@ -23,12 +47,17 @@ gravity_scale = 0.0
 script = ExtResource("1_ug5mm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.03, 0.03)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ntlbq")
+animation = &"hit"
+autoplay = "move"
+speed_scale = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_e5p17")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="remove_Bubble"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
