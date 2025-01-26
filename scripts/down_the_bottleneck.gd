@@ -28,8 +28,8 @@ func _ready() -> void:
 	title.start_game.connect(self.title_to_intro)
 	title.credits.connect(self.title_to_credits)
 	title.end_game.connect(self.end_game)
-	credits.end_credits.connect(self.credits_to_title)
-	lose.end_credits.connect(self.win_to_credits);
+	credits.end_credits.connect(self.credits_to_title);
+	lose.end_credits.connect(self.credits_to_title);
 	win.end_win.connect(self.win_to_credits)
 	intro.end_intro.connect(self.start_new_game)
 
@@ -54,6 +54,7 @@ func _process(_delta: float) -> void:
 	if credits.visible: return
 	if win.visible: return
 	if lose.visible: return
+	if intro.visible: return
 
 	# escape
 	if Input.is_action_just_pressed("escape"):
@@ -79,7 +80,6 @@ func _process(_delta: float) -> void:
 # game
 
 func start_new_game():
-
 	# clean
 	clean_world()
 	
@@ -179,6 +179,7 @@ func title_to_intro():
 	lose.hide()
 	hud.hide()
 	intro.show();
+	$introCanvas/auto_exit.start()
 	
 func title_to_credits():
 	credits.show()
@@ -206,7 +207,6 @@ func game_to_title():
 
 	# clean_world
 	self.clean_world()
-
 	# canvas
 	title.show()
 	credits.hide()
