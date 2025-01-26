@@ -6,6 +6,8 @@ extends Node2D
 # signals
 signal fight_is_now_over_go_up
 signal fight_is_now_over_but_you_lost
+signal to_hud_update_oxygen_level(oxygen_level: int)
+
 
 # refs
 @onready var wizard = $wizard
@@ -27,3 +29,8 @@ func _on_wizard_the_evil_wizard_is_dead() -> void:
 
 func _on_character_fighter_the_poor_character_died_during_an_epic_fight() -> void:
 	fight_is_now_over_but_you_lost.emit()
+
+
+func _on_character_fighter_hit_so_update_oxygen_level(oxygen_level: int) -> void:
+	print("hit in wizard fight world: ", oxygen_level)
+	to_hud_update_oxygen_level.emit(oxygen_level)
