@@ -7,6 +7,10 @@ const MAX_SCREEN = 980
 @export var player_swims_down: bool = true
 
 func _ready():
+	pass
+	
+func set_swimstate_down(swimstate: bool):
+	player_swims_down = swimstate
 	if player_swims_down:
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.play()
@@ -14,7 +18,6 @@ func _ready():
 	elif not player_swims_down:
 		$AnimatedSprite2D.flip_v = true
 		$AnimatedSprite2D.play()
-	
 
 func _physics_process(delta):
 	var velocity = Vector2.ZERO

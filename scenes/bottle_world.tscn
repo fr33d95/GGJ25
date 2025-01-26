@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://vr4abtws04v4"]
+[gd_scene load_steps=8 format=3 uid="uid://vr4abtws04v4"]
 
 [ext_resource type="Script" path="res://scripts/bottle_world.gd" id="1_gn8dh"]
 [ext_resource type="PackedScene" uid="uid://s3k1nc43q6st" path="res://scenes/o2_bubble.tscn" id="2_4nhv4"]
 [ext_resource type="PackedScene" uid="uid://cds01lpxp8wcc" path="res://scenes/upwards_bubble.tscn" id="3_08umx"]
 [ext_resource type="Texture2D" uid="uid://pwqarrodugd6" path="res://art/BG_swim_bottle.png" id="4_61p3d"]
 [ext_resource type="Texture2D" uid="uid://oe87rtyxdiev" path="res://art/bottle_raport_trans_02.png" id="5_c7vpc"]
+[ext_resource type="PackedScene" uid="uid://bxltdhox1g3mu" path="res://scenes/player.tscn" id="6_docfb"]
 
 [sub_resource type="Curve2D" id="Curve2D_enmn6"]
 _data = {
@@ -56,6 +57,8 @@ wait_time = 3.0
 
 [node name="Upwards_Hit_Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Player" parent="." instance=ExtResource("6_docfb")]
 
 [connection signal="timeout" from="DepthTimer" to="." method="_on_depth_timer_timeout"]
 [connection signal="timeout" from="O2_BubbleSpawner" to="." method="_on_o_2_bubble_spawner_timeout"]

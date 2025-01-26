@@ -33,12 +33,14 @@ func start_downwards_game():
 	isUpwards = false;
 	current_depth =0;
 	startup();
+	$Player.set_swimstate_down(true);
 	
 	
 func start_upwards_game():
 	isUpwards = true;
 	current_depth =depth;
 	startup();
+	$Player.set_swimstate_down(false);
 	
 func startup():
 	print("start")
