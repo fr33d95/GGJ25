@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://vr4abtws04v4"]
 
 [ext_resource type="Script" path="res://scripts/bottle_world.gd" id="1_gn8dh"]
-[ext_resource type="Texture2D" uid="uid://d2rojsuqeroa2" path="res://art/test/sky.jpg" id="1_rp4ho"]
 [ext_resource type="PackedScene" uid="uid://s3k1nc43q6st" path="res://scenes/o2_bubble.tscn" id="2_4nhv4"]
-[ext_resource type="Texture2D" uid="uid://b64p7m64rd1dv" path="res://art/test/brickwall.jpg" id="2_oikbo"]
 [ext_resource type="PackedScene" uid="uid://cds01lpxp8wcc" path="res://scenes/upwards_bubble.tscn" id="3_08umx"]
+[ext_resource type="Texture2D" uid="uid://pwqarrodugd6" path="res://art/BG_swim_bottle.png" id="4_61p3d"]
+[ext_resource type="Texture2D" uid="uid://oe87rtyxdiev" path="res://art/bottle_raport_trans_02.png" id="5_c7vpc"]
 
 [sub_resource type="Curve2D" id="Curve2D_enmn6"]
 _data = {
@@ -27,17 +27,17 @@ motion_mirroring = Vector2(0, 700)
 [node name="BackgroundSprite" type="Sprite2D" parent="Background/Background"]
 position = Vector2(640, 356)
 scale = Vector2(0.666667, 0.370833)
-texture = ExtResource("1_rp4ho")
+texture = ExtResource("4_61p3d")
 
 [node name="BottleBackground" type="ParallaxBackground" parent="."]
 
 [node name="Bottle" type="ParallaxLayer" parent="BottleBackground"]
-motion_mirroring = Vector2(0, 700)
+motion_mirroring = Vector2(0, 741)
 
 [node name="BottleSprite" type="Sprite2D" parent="BottleBackground/Bottle"]
 position = Vector2(658, 356)
 scale = Vector2(0.339583, 0.370833)
-texture = ExtResource("2_oikbo")
+texture = ExtResource("5_c7vpc")
 region_rect = Rect2(200, 100, 500, 600)
 
 [node name="DepthTimer" type="Timer" parent="."]

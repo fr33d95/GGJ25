@@ -35,7 +35,6 @@ scale = Vector2(1.4, 1.4)
 script = ExtResource("1_vy0yb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_wbvwl")
 animation = &"swim_1"
 frame_progress = 0.962906

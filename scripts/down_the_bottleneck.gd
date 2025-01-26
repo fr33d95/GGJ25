@@ -72,23 +72,26 @@ func start_new_game():
 	# clean
 	clean_world()
 	
+	var bottleWorld =main_world.instantiate()
 	# start  with intro
-	world.add_child(main_world.instantiate())
-
+	world.add_child(bottleWorld)
+	bottleWorld.start_downwards_game()
+	
 	# signal connections
-	#world.get_node("intro_world").finished.connect(finished_intro_world)
+	bottleWorld.win.connect(bottle_win_signal)
+	bottleWorld.lose.connect(bottle_lose_signal)
 
 	# title
 	title.hide()
 	win.hide()
 	credits.hide()
-
+	
 	# is playing
 	is_playing = true
 
 
 func start_fight_world():
-
+	print("test")
 	# todo:
 	# save stats
 
@@ -120,6 +123,14 @@ func start_up_the_bottle():
 	# clean
 	clean_world()
 
+	var bottleWorld =main_world.instantiate()
+	# start  with intro
+	world.add_child(bottleWorld)
+	bottleWorld.start_upwards_game()
+	
+	# signal connections
+	bottleWorld.win.connect(bottle_win_signal)
+	bottleWorld.lose.connect(bottle_lose_signal)
 	# todo:
 	# start up the bottle world instantiate
 
@@ -168,7 +179,14 @@ func game_to_title():
 	bgm_up.stop()
 	bgm_down.play()
 
-
+func bottle_win_signal(upwards: bool):
+	if(upwards):
+		win_game()
+	else:
+		start_fight_world()
+		
+func bottle_lose_signal():
+	win_game()
 func win_game():
 
 	# canvas
