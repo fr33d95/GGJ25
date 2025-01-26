@@ -15,8 +15,7 @@ signal o2changed(new_value:int)
 @export var o2_depletion_upwards = 5;
 @export var o2_gain_bubble = 10;
 @export var depth_decrease_hit = 5;
-
-var o2_status = 100;
+@export var o2_status = 100;
 
 
 var current_depth = 0;

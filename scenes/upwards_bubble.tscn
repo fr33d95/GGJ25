@@ -1,21 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://cds01lpxp8wcc"]
+[gd_scene load_steps=7 format=3 uid="uid://cds01lpxp8wcc"]
 
 [ext_resource type="Script" path="res://scripts/o_2_bubble.gd" id="1_6lyfh"]
-[ext_resource type="Texture2D" uid="uid://ct7k4jxiy7lsc" path="res://art/test/poop.png" id="2_cr08b"]
+[ext_resource type="Texture2D" uid="uid://eftbogrl45qv" path="res://art/100xbubbles/magic_lift_bubble_100x/mag-bubble_01_idle.png" id="2_4vwfv"]
+[ext_resource type="Texture2D" uid="uid://c2rgoqy0rutle" path="res://art/100xbubbles/magic_lift_bubble_100x/mag-bubble_02_move.png" id="3_8y6eb"]
+[ext_resource type="Texture2D" uid="uid://bfpdvtkp0eqlb" path="res://art/100xbubbles/magic_lift_bubble_100x/mag-bubble_03_hit.png" id="4_1m60r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3uoyo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_cr08b")
+"texture": ExtResource("2_4vwfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1m60r")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4vwfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8y6eb")
 }],
 "loop": true,
-"name": &"default",
+"name": &"move",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5p17"]
-radius = 37.0135
+radius = 18.0
 
 [node name="upwards_bubble" type="RigidBody2D" groups=["upwards_bubbles"]]
 collision_mask = 0
@@ -23,12 +39,16 @@ gravity_scale = 0.0
 script = ExtResource("1_6lyfh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["upwards_bubbles"]]
-scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_3uoyo")
+animation = &"hit"
+autoplay = "move"
+speed_scale = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_e5p17")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="remove_Bubble"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
