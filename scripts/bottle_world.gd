@@ -126,6 +126,7 @@ func upwards_hit():
 	isUpwardsHit = true;
 	$Upwards_Hit_Timer.start();
 	updateSpeed(scrollspeed_offset_upwards_hit);
+	
 
 func losing():
 	stopScrolling = true;
