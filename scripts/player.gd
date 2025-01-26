@@ -37,6 +37,8 @@ func _physics_process(delta):
 		position.x = clamp(position.x, MIN_SCREEN, MAX_SCREEN)
 
 func _on_body_entered(body):
+	if(stop_moving): 
+		return
 	body.hit()
 	if body.is_in_group("o2_bubbles"):
 		o2_hit.emit()
@@ -50,6 +52,6 @@ func _on_Timer_timeout():
 	$CollisionShape2D.set_deferred("disabled", false)
 	
 func sufficate():
+	stop_moving= true;
 	$AnimatedSprite2D.flip_v = false
-	$CollisionShape2D.set_deferred("disabled", true)
 	$AnimatedSprite2D.animation="sufficate"

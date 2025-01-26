@@ -39,6 +39,7 @@ show_percentage = false
 script = ExtResource("1_2xcis")
 
 [node name="Oxygen2" type="Label" parent="Oxygen"]
+layout_mode = 0
 offset_left = 140.0
 offset_top = -2.0
 offset_right = 210.0

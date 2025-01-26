@@ -3,7 +3,7 @@ signal win(upwards:bool)
 signal lose
 signal o2changed(new_value:int)
 
-@export var depth = 80;
+@export var depth = 30;
 @export var scroll_stop_threshhold = 55;
 @export var o2_bubble_scene: PackedScene;
 @export var upwards_bubble_scene: PackedScene;
@@ -15,7 +15,7 @@ signal o2changed(new_value:int)
 @export var o2_depletion_upwards = 5;
 @export var o2_gain_bubble = 10;
 @export var depth_decrease_hit = 5;
-@export var o2_status = 3;
+@export var o2_status = 100;
 
 
 var current_depth = 0;
@@ -42,7 +42,6 @@ func start_upwards_game():
 	$Player.set_swimstate_down(false);
 	
 func startup():
-	o2_status = 100;
 	$DepthTimer.start();
 	$O2_BubbleSpawner.start();
 	$Upwards_Bubble_Spawner.start();
@@ -62,16 +61,16 @@ func _process(delta: float) -> void:
 
 func _on_depth_timer_timeout() -> void:
 	if(isUpwards):
-		o2_status -= o2_depletion_upwards
+		updateO2(-o2_depletion_upwards)
 		current_depth -=1;
 		if(current_depth <= 0):
 			win_emit();
 	else:
-		o2_status -= o2_depletion_downwards
+		updateO2(-o2_depletion_downwards)
 		current_depth += 1;
 		if(current_depth >= depth):
 			win_emit();
-	
+			
 
 
 func _on_o_2_bubble_spawner_timeout() -> void:
@@ -133,7 +132,9 @@ func losing():
 	updateSpeed(scrollspeed);
 	$Player.sufficate();
 	$deathTimer.start();
-	
+	$DepthTimer.stop();
+	$O2_BubbleSpawner.stop();
+	$Upwards_Bubble_Spawner.stop();
 func o2_hit():
 	updateO2(o2_gain_bubble)
 	
@@ -147,7 +148,11 @@ func lose_emit():
 	
 func updateO2(gain: int):
 	o2_status += gain;
+	print(o2_status)
 	O2_emit();
+	if(o2_status<=0):
+		losing();
+		
 
 func setO2(value: int):
 	o2_status = value;

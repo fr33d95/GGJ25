@@ -54,7 +54,8 @@ script = ExtResource("1_vy0yb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wbvwl")
-animation = &"sufficate"
+animation = &"swim_1"
+autoplay = "swim_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.4, 1.4)

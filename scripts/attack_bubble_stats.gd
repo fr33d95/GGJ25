@@ -9,6 +9,7 @@ class_name AttackBubbleStats extends Resource
 # vars
 @export var attack_bubble_type: Enums.AttackBubbleType
 @export var speed: float
+@export var sfx_bubble_explode: Resource
 
 
 # --
@@ -17,3 +18,4 @@ class_name AttackBubbleStats extends Resource
 func get_sprite_frames(): return sprite_frames
 func get_speed(): return speed
 func get_type(): return attack_bubble_type
+func get_sfx_bubble_explode_stream(): return sfx_bubble_explode
