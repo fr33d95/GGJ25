@@ -2,16 +2,17 @@
 
 [ext_resource type="Script" path="res://scripts/wizard_fight_world.gd" id="1_wyqjj"]
 [ext_resource type="PackedScene" uid="uid://bnnr3nu4mntx1" path="res://prefabs/wizard.tscn" id="2_prq4b"]
-[ext_resource type="Texture2D" uid="uid://b0bmr3qiyr3rf" path="res://art/BG_bottom.png" id="2_yfqsq"]
+[ext_resource type="Texture2D" uid="uid://biacin6rwo4qo" path="res://art/bottle_bottom.png" id="2_vxi8u"]
 [ext_resource type="PackedScene" uid="uid://ds6hie2eixwyp" path="res://prefabs/character_fighter.tscn" id="3_pnnn8"]
 
 [node name="wizard_fight_world" type="Node2D"]
 script = ExtResource("1_wyqjj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(664, 360)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_yfqsq")
+[node name="bg" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 0
+texture = ExtResource("2_vxi8u")
 
 [node name="wizard" parent="." instance=ExtResource("2_prq4b")]
 position = Vector2(288, 528)
