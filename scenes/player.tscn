@@ -29,7 +29,7 @@ animations = [{
 radius = 11.0
 height = 70.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Area2D"]
 position = Vector2(640, 142)
 script = ExtResource("1_vy0yb")
 
@@ -41,3 +41,9 @@ frame_progress = 0.962906
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.4, 1.4)
 shape = SubResource("CapsuleShape2D_m8ce5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
