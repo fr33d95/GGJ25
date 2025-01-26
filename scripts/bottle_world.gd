@@ -3,7 +3,7 @@ signal win(upwards:bool)
 signal lose
 signal o2changed(new_value:int)
 
-@export var depth = 60;
+@export var depth = 10;
 @export var scroll_stop_threshhold = 55;
 @export var o2_bubble_scene: PackedScene;
 @export var upwards_bubble_scene: PackedScene;
@@ -25,20 +25,23 @@ var isUpwardsHit = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	start_upwards_game()
+	pass
 	
 
 func start_downwards_game():
+	print("down")
 	isUpwards = false;
+	current_depth =0;
 	startup();
 	
 	
 func start_upwards_game():
 	isUpwards = true;
+	current_depth =depth;
 	startup();
 	
 func startup():
-	current_depth =0;
+	print("start")
 	o2_status = 100;
 	$DepthTimer.start();
 	$O2_BubbleSpawner.start();
@@ -57,13 +60,17 @@ func _process(delta: float) -> void:
 
 
 func _on_depth_timer_timeout() -> void:
+	print(isUpwards)
+	print(current_depth)
 	if(isUpwards):
 		current_depth -=1;
 		if(current_depth <= 0):
 			win_emit();
 	else:
 		current_depth += 1;
+		print(current_depth)
 		if(current_depth >= depth):
+			print("win")
 			win_emit();
 	
 

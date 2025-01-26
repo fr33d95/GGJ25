@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxltdhox1g3mu"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_vy0yb"]
+[ext_resource type="Texture2D" uid="uid://dcoavoju561wf" path="res://art/spritesheet_tubii.png" id="2_06evk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxuto"]
+atlas = ExtResource("2_06evk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht7uv"]
+atlas = ExtResource("2_06evk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbvwl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxuto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht7uv")
+}],
+"loop": true,
+"name": &"swim_1",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8ce5"]
+radius = 11.0
+height = 70.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(640, 142)
+script = ExtResource("1_vy0yb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wbvwl")
+animation = &"swim_1"
+frame_progress = 0.962906
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.4, 1.4)
+shape = SubResource("CapsuleShape2D_m8ce5")

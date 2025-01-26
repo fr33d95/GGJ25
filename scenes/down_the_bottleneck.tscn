@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/down_the_bottleneck.gd" id="1_71sw5"]
 [ext_resource type="PackedScene" uid="uid://0c8nj0hlr44r" path="res://scenes/title_canvas.tscn" id="1_gkmfn"]
-[ext_resource type="PackedScene" uid="uid://bu4baq1srou4v" path="res://scenes/test_world.tscn" id="2_c7sod"]
+[ext_resource type="PackedScene" uid="uid://vr4abtws04v4" path="res://scenes/bottle_world.tscn" id="2_1ceb7"]
 [ext_resource type="PackedScene" uid="uid://c82gvr2i46sbi" path="res://scenes/win_canvas.tscn" id="3_ugpge"]
 [ext_resource type="PackedScene" uid="uid://cnfck5i7gajkb" path="res://scenes/credits_canvas.tscn" id="4_iei0g"]
 [ext_resource type="AudioStream" uid="uid://byk5q7nry83dl" path="res://audio/down.mp3" id="6_7giv3"]
@@ -10,7 +10,7 @@
 
 [node name="down_the_bottleneck" type="Node2D"]
 script = ExtResource("1_71sw5")
-main_world = ExtResource("2_c7sod")
+main_world = ExtResource("2_1ceb7")
 
 [node name="world" type="Node2D" parent="."]
 
