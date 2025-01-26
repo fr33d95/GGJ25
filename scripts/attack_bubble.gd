@@ -48,6 +48,7 @@ func set_stats(new_stats: AttackBubbleStats, target_shot_source: Enums.ShotSourc
 	# set vars
 	speed = new_stats.get_speed()
 	type = new_stats.get_type()
+	sfx_bubble_explode.stream = new_stats.get_sfx_bubble_explode_stream()
 
 	# anim sprites
 	anim.sprite_frames = new_stats.get_sprite_frames()

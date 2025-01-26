@@ -5,6 +5,7 @@ class_name CharacterFighter extends Area2D
 
 # signals
 signal the_poor_character_died_during_an_epic_fight
+signal hit_so_update_oxygen_level(oxygen_level: int)
 
 # resources
 @export var attack_bubble_scene: PackedScene
@@ -12,6 +13,7 @@ signal the_poor_character_died_during_an_epic_fight
 
 # settings
 @export var max_num_attack_bubbles: int = 3
+@export var hit_damage: int = 5
 
 # refs
 @onready var anim: AnimatedSprite2D = $anim
@@ -20,8 +22,9 @@ signal the_poor_character_died_during_an_epic_fight
 
 # vars
 var is_dead: bool = false
-var num_hits
 var actual_anim_state = null
+var num_hits: int
+var oxygen_level: int = 100
 
 # const anim
 const anim_fight_idle = &"fight_idle"
@@ -96,12 +99,20 @@ func hit():
 	# returns
 	if is_dead: return
 
-	print("character is hit")
-	# todo:
-	# loose oxygen
-
 	# add number of hits
 	num_hits += 1
+	print("character is hit")
+
+	# loose oxygen
+	oxygen_level -= hit_damage
+
+	# update signal
+	hit_so_update_oxygen_level.emit(oxygen_level)
+
+	# die condition
+	if oxygen_level <= 0: 
+		die()
+		return
 
 	# hit animation
 	anim.set_animation(anim_hit)
@@ -137,14 +148,14 @@ func die():
 # --
 # setter
 
-func set_character_stats():
-	# todo:
-	pass
+func set_character_stats(new_oxygen_level: int):
+	
+	# update oxygen level
+	oxygen_level = new_oxygen_level
 
 
 # --
 # signal methods
-
 
 func _on_area_entered(area: Area2D) -> void:
 
@@ -156,7 +167,6 @@ func _on_area_entered(area: Area2D) -> void:
 	self.hit()
 	area.destroy_bubble()
 	
-
 
 func _on_death_timer_timeout() -> void:
 	

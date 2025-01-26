@@ -20,4 +20,5 @@ position = Vector2(288, 528)
 position = Vector2(872, 528)
 
 [connection signal="the_evil_wizard_is_dead" from="wizard" to="." method="_on_wizard_the_evil_wizard_is_dead"]
+[connection signal="hit_so_update_oxygen_level" from="character_fighter" to="." method="_on_character_fighter_hit_so_update_oxygen_level"]
 [connection signal="the_poor_character_died_during_an_epic_fight" from="character_fighter" to="." method="_on_character_fighter_the_poor_character_died_during_an_epic_fight"]

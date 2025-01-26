@@ -115,6 +115,7 @@ func start_fight_world():
 	# make signal connections
 	wizard_fight_world.fight_is_now_over_go_up.connect(self.start_up_the_bottle)
 	wizard_fight_world.fight_is_now_over_but_you_lost.connect(self.wizard_fight_lose_signal)
+	wizard_fight_world.to_hud_update_oxygen_level.connect(update_hud)
 
 	# todo:
 	# overwrite stats
@@ -153,7 +154,13 @@ func clean_world():
 
 	# wait for delete
 	await get_tree().process_frame
-	
+
+
+func update_hud(new_oxygen_level: int):
+	# todo:
+	# update hud
+	print("hud oxygen: ", new_oxygen_level)
+	pass
 
 
 func title_to_credits():

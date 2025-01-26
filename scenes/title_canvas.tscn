@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://0c8nj0hlr44r"]
+[gd_scene load_steps=3 format=3 uid="uid://0c8nj0hlr44r"]
 
 [ext_resource type="Script" path="res://scripts/title_canvas.gd" id="1_rng1i"]
+[ext_resource type="Texture2D" uid="uid://ce1f1oky5wc6c" path="res://art/title_image.png" id="2_ph40a"]
 
 [node name="title_canvas" type="CanvasLayer"]
 script = ExtResource("1_rng1i")
@@ -12,6 +13,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.248092, 0.204599, 0.196905, 1)
+
+[node name="title_image" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ph40a")
 
 [node name="buttons" type="VBoxContainer" parent="."]
 anchors_preset = 8

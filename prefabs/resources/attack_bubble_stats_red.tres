@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="AttackBubbleStats" load_steps=3 format=3 uid="uid://d2anp18kpymjt"]
+[gd_resource type="Resource" script_class="AttackBubbleStats" load_steps=4 format=3 uid="uid://d2anp18kpymjt"]
 
 [ext_resource type="Script" path="res://scripts/attack_bubble_stats.gd" id="1_smk2m"]
 [ext_resource type="SpriteFrames" uid="uid://cgfkxnqqcjk7h" path="res://anim/attack_bubbles_red.tres" id="2_asv5x"]
+[ext_resource type="AudioStream" uid="uid://1vpqmnhucmcd" path="res://audio/Bubble_FIRE.ogg" id="2_je1s5"]
 
 [resource]
 script = ExtResource("1_smk2m")
 sprite_frames = ExtResource("2_asv5x")
 attack_bubble_type = 0
 speed = 19.0
+sfx_bubble_explode = ExtResource("2_je1s5")
