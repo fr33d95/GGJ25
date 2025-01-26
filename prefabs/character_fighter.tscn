@@ -22,8 +22,7 @@ shape = SubResource("RectangleShape2D_q4gym")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_078fi")
-animation = &"fight_idle"
-frame_progress = 0.567322
+animation = &"suffocate"
 
 [node name="attack_bubble_container" type="Node2D" parent="."]
 

@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxltdhox1g3mu"]
+[gd_scene load_steps=9 format=3 uid="uid://bxltdhox1g3mu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vy0yb"]
 [ext_resource type="Texture2D" uid="uid://dcoavoju561wf" path="res://art/spritesheet_tubii.png" id="2_06evk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8krdg"]
+atlas = ExtResource("2_06evk")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njokc"]
+atlas = ExtResource("2_06evk")
+region = Rect2(100, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxuto"]
 atlas = ExtResource("2_06evk")
@@ -13,6 +21,17 @@ region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wbvwl"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8krdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njokc")
+}],
+"loop": false,
+"name": &"sufficate",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hxuto")
@@ -35,8 +54,7 @@ script = ExtResource("1_vy0yb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wbvwl")
-animation = &"swim_1"
-frame_progress = 0.962906
+animation = &"sufficate"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.4, 1.4)

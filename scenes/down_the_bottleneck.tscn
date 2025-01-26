@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t0i6libxido2"]
+[gd_scene load_steps=10 format=3 uid="uid://t0i6libxido2"]
 
 [ext_resource type="Script" path="res://scripts/down_the_bottleneck.gd" id="1_71sw5"]
 [ext_resource type="PackedScene" uid="uid://0c8nj0hlr44r" path="res://scenes/title_canvas.tscn" id="1_gkmfn"]

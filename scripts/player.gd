@@ -6,6 +6,7 @@ signal upwards_hit
 const SPEED = 350.0
 const MIN_SCREEN = 330
 const MAX_SCREEN = 980
+var stop_moving = false;
 
 @export var player_swims_down: bool = true
 
@@ -31,22 +32,24 @@ func _physics_process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
-	
-	position += velocity * delta
-	position.x = clamp(position.x, MIN_SCREEN, MAX_SCREEN)
+	if(not stop_moving):
+		position += velocity * delta
+		position.x = clamp(position.x, MIN_SCREEN, MAX_SCREEN)
 
 func _on_body_entered(body):
-	print("hit")
 	body.hit()
 	if body.is_in_group("o2_bubbles"):
-		print("o2")
 		o2_hit.emit()
 		$CollisionShape2D.set_deferred("disabled", true)
 	if body.is_in_group("upwards_bubbles"):
-		print("upwards")
 		upwards_hit.emit()
 		$CollisionShape2D.set_deferred("disabled", true)
 	$Timer.start(0.6)
 
 func _on_Timer_timeout():
 	$CollisionShape2D.set_deferred("disabled", false)
+	
+func sufficate():
+	$AnimatedSprite2D.flip_v = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	$AnimatedSprite2D.animation="sufficate"
