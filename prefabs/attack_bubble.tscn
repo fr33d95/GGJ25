@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca4rpme7ri7eb"]
+[gd_scene load_steps=5 format=3 uid="uid://ca4rpme7ri7eb"]
 
 [ext_resource type="Script" path="res://scripts/attack_bubble.gd" id="1_f8tth"]
 [ext_resource type="SpriteFrames" uid="uid://cwtx3uj67syvp" path="res://anim/attack_bubbles_green.tres" id="2_ggo3s"]
+[ext_resource type="AudioStream" uid="uid://c1cncm4y6ls2u" path="res://audio/bubble_sound_explode.ogg" id="3_mwadl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn84s"]
 size = Vector2(32, 32)
@@ -18,6 +19,10 @@ frame_progress = 0.175151
 shape = SubResource("RectangleShape2D_fn84s")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="sfx_bubble_explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mwadl")
+volume_db = -1.92
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
