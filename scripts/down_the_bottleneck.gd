@@ -12,9 +12,11 @@ var fight_world_scene: PackedScene = preload("res://scenes/wizard_fight_world.ts
 @onready var bgm_down = $bgm_down
 @onready var bgm_wizard_fight = $bgm_wizard_fight
 @onready var bgm_up = $bgm_up
+@onready var hud = $HUD
 @onready var lose= $lose_canvas
 
 var bottleWorld
+var wizard_fight_world
 
 # playing flag
 var is_playing:bool = false
@@ -33,7 +35,8 @@ func _ready() -> void:
 	title.show()
 	win.hide()
 	credits.hide()
-	lose.hide();
+	lose.hide()
+	hud.hide()
 
 	# play down also in title
 	bgm_down.play()
@@ -90,24 +93,23 @@ func start_new_game():
 	title.hide()
 	win.hide()
 	credits.hide()
-	lose.hide();
+	lose.hide()
+	hud.show()
 	
 	# is playing
 	is_playing = true
 
 
 func start_fight_world():
-	print("test")
 	
-	var oxygen = bottleWorld.getOxygen
-
-	print("start the bubble fight world")
+	# save oxygen
+	var oxygen: int = bottleWorld.getOxygen()
 
 	# clean
 	clean_world()
 
 	# world
-	var wizard_fight_world = fight_world_scene.instantiate()
+	wizard_fight_world = fight_world_scene.instantiate()
 
 	# start  with intro
 	world.add_child(wizard_fight_world)
@@ -117,7 +119,6 @@ func start_fight_world():
 	wizard_fight_world.fight_is_now_over_but_you_lost.connect(self.wizard_fight_lose_signal)
 	wizard_fight_world.to_hud_update_oxygen_level.connect(update_hud)
 
-	# todo:
 	# overwrite stats
 	wizard_fight_world.overwrite_character_stats(oxygen)
 
@@ -139,8 +140,6 @@ func start_up_the_bottle():
 	# signal connections
 	bottleWorld.win.connect(bottle_win_signal)
 	bottleWorld.lose.connect(bottle_lose_signal)
-	# todo:
-	# start up the bottle world instantiate
 
 	# bgm
 	bgm_wizard_fight.stop()
@@ -157,24 +156,26 @@ func clean_world():
 
 
 func update_hud(new_oxygen_level: int):
-	# todo:
-	# update hud
-	print("hud oxygen: ", new_oxygen_level)
-	pass
+	
+	# update oxygen
+	hud.get_node("Oxygen").set_oxygen_value(new_oxygen_level)
 
 
 func title_to_credits():
 	credits.show()
 	title.hide()
 	win.hide()
-	lose.hide();
+	lose.hide()
+	hud.hide()
 
 
 func credits_to_title():
 	title.show()
 	credits.hide()
 	win.hide()
-	lose.hide();
+	lose.hide()
+	hud.hide()
+
 
 
 func win_to_credits(): self.title_to_credits()
@@ -189,7 +190,8 @@ func game_to_title():
 	title.show()
 	credits.hide()
 	win.hide()
-	lose.hide();
+	lose.hide()
+	hud.hide()
 
 	# bgm
 	bgm_down.stop()
@@ -213,12 +215,14 @@ func win_game():
 	title.hide()
 	credits.hide()
 	lose.hide();
+	hud.hide()
 	win.show()
 	
 func lose_game():
 	clean_world()
 	title.hide()
 	credits.hide()
+	hud.hide()
 	lose.show();
 	win.hide()
 
