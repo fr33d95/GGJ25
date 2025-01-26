@@ -17,6 +17,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free();
 	
 func hit():
+	linear_velocity = Vector2(0,0)
 	$AnimatedSprite2D.animation = "hit"
 	$CollisionShape2D.set_deferred("disabled", true)
 	

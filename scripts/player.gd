@@ -37,6 +37,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	print("hit")
+	body.hit()
 	if body.is_in_group("o2_bubbles"):
 		print("o2")
 		o2_hit.emit()

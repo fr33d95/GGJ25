@@ -3,7 +3,7 @@ signal win(upwards:bool)
 signal lose
 signal o2changed(new_value:int)
 
-@export var depth = 10;
+@export var depth = 80;
 @export var scroll_stop_threshhold = 55;
 @export var o2_bubble_scene: PackedScene;
 @export var upwards_bubble_scene: PackedScene;
@@ -157,3 +157,6 @@ func updateSpeed (speed: float):
 func _on_upwards_hit_timer_timeout() -> void:
 	isUpwardsHit = false;
 	updateSpeed(-scrollspeed_offset_upwards_hit);
+	
+func getOxygen():
+	return o2_status;

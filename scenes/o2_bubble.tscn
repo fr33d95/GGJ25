@@ -59,4 +59,5 @@ shape = SubResource("CircleShape2D_e5p17")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="remove_Bubble"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

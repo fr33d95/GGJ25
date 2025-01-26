@@ -62,3 +62,5 @@ one_shot = true
 [connection signal="timeout" from="O2_BubbleSpawner" to="." method="_on_o_2_bubble_spawner_timeout"]
 [connection signal="timeout" from="Upwards_Bubble_Spawner" to="." method="_on_upwards_bubble_spawner_timeout"]
 [connection signal="timeout" from="Upwards_Hit_Timer" to="." method="_on_upwards_hit_timer_timeout"]
+[connection signal="o2_hit" from="Player" to="." method="o2_hit"]
+[connection signal="upwards_hit" from="Player" to="." method="upwards_hit"]

@@ -12,7 +12,9 @@ var fight_world_scene: PackedScene = preload("res://scenes/wizard_fight_world.ts
 @onready var bgm_down = $bgm_down
 @onready var bgm_wizard_fight = $bgm_wizard_fight
 @onready var bgm_up = $bgm_up
+@onready var lose= $lose_canvas
 
+var bottleWorld
 
 # playing flag
 var is_playing:bool = false
@@ -24,12 +26,14 @@ func _ready() -> void:
 	title.credits.connect(self.title_to_credits)
 	title.end_game.connect(self.end_game)
 	credits.end_credits.connect(self.credits_to_title)
+	lose.end_credits.connect(self.win_to_credits);
 	win.end_win.connect(self.win_to_credits)
 
 	# canvas handling
 	title.show()
 	win.hide()
 	credits.hide()
+	lose.hide();
 
 	# play down also in title
 	bgm_down.play()
@@ -43,6 +47,7 @@ func _process(_delta: float) -> void:
 	# leave cases
 	if credits.visible: return
 	if win.visible: return
+	if lose.visible: return
 
 	# escape
 	if Input.is_action_just_pressed("escape"):
@@ -72,7 +77,7 @@ func start_new_game():
 	# clean
 	clean_world()
 	
-	var bottleWorld =main_world.instantiate()
+	bottleWorld = main_world.instantiate()
 	# start  with intro
 	world.add_child(bottleWorld)
 	bottleWorld.start_downwards_game()
@@ -85,6 +90,7 @@ func start_new_game():
 	title.hide()
 	win.hide()
 	credits.hide()
+	lose.hide();
 	
 	# is playing
 	is_playing = true
@@ -92,8 +98,8 @@ func start_new_game():
 
 func start_fight_world():
 	print("test")
-	# todo:
-	# save stats
+	
+	var oxygen = bottleWorld.getOxygen
 
 	print("start the bubble fight world")
 
@@ -108,12 +114,11 @@ func start_fight_world():
 
 	# make signal connections
 	wizard_fight_world.fight_is_now_over_go_up.connect(self.start_up_the_bottle)
-	# todo:
-	#wizard_fight_world.fight_is_now_over_but_you_lost.connect()
+	wizard_fight_world.fight_is_now_over_but_you_lost.connect(self.wizard_fight_lose_signal)
 
 	# todo:
 	# overwrite stats
-	#wizard_fight_world.overwrite_character_stats()
+	wizard_fight_world.overwrite_character_stats(oxygen)
 
 	# bgm
 	bgm_down.stop()
@@ -125,7 +130,7 @@ func start_up_the_bottle():
 	# clean
 	clean_world()
 
-	var bottleWorld =main_world.instantiate()
+	bottleWorld = main_world.instantiate()
 	# start  with intro
 	world.add_child(bottleWorld)
 	bottleWorld.start_upwards_game()
@@ -148,18 +153,21 @@ func clean_world():
 
 	# wait for delete
 	await get_tree().process_frame
+	
 
 
 func title_to_credits():
 	credits.show()
 	title.hide()
 	win.hide()
+	lose.hide();
 
 
 func credits_to_title():
 	title.show()
 	credits.hide()
 	win.hide()
+	lose.hide();
 
 
 func win_to_credits(): self.title_to_credits()
@@ -174,6 +182,7 @@ func game_to_title():
 	title.show()
 	credits.hide()
 	win.hide()
+	lose.hide();
 
 	# bgm
 	bgm_down.stop()
@@ -188,13 +197,23 @@ func bottle_win_signal(upwards: bool):
 		start_fight_world()
 		
 func bottle_lose_signal():
-	win_game()
+	lose_game()
+func wizard_fight_lose_signal():
+	lose_game()
 func win_game():
 
 	# canvas
 	title.hide()
 	credits.hide()
+	lose.hide();
 	win.show()
+	
+func lose_game():
+	clean_world()
+	title.hide()
+	credits.hide()
+	lose.show();
+	win.hide()
 
 
 func end_game():
