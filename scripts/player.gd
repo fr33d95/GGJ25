@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 350.0
+const MIN_SCREEN = 330
+const MAX_SCREEN = 980
 
-var oxygen = 100
-var oxygen_decrease_rate = 1
-var player_is_alive = true
-var player_swims_down = false
-var screen_size = Vector2(1000, 140) # TODO set initial bottle space
-
+@export var player_swims_down: bool = true
 
 func _ready():
 	if player_swims_down:
@@ -28,13 +25,6 @@ func _physics_process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
-			
+	
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-
-
-func _on_Timer_timeout():
-	oxygen -= oxygen_decrease_rate
-	if oxygen <= 0:
-		player_is_alive = false
-		$AnimatedSprite2D.stop()
+	position.x = clamp(position.x, MIN_SCREEN, MAX_SCREEN)
