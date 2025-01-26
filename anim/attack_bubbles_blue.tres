@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://fwgt04dudr5p"]
+
+[ext_resource type="Texture2D" uid="uid://ckx3pivy0vrcw" path="res://art/100xbubbles/water_bubble_100x/water_02_move.png" id="1_1d8s4"]
+[ext_resource type="Texture2D" uid="uid://bvif3dnyphmqw" path="res://art/100xbubbles/water_bubble_100x/water_03_hit.png" id="2_pwedu"]
+[ext_resource type="Texture2D" uid="uid://ctw3wd7b80v61" path="res://art/100xbubbles/water_bubble_100x/water_04_burst.png" id="3_f7oit"]
+[ext_resource type="Texture2D" uid="uid://bevh0gdanl3ux" path="res://art/100xbubbles/water_bubble_100x/water_05_fade.png" id="4_6ivfg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1d8s4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pwedu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f7oit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6ivfg")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]

@@ -1,24 +1,75 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://lafq55m24b67"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://lafq55m24b67"]
+
+[ext_resource type="Texture2D" uid="uid://c3rstobkshc8u" path="res://art/spritesheet_wizard.png" id="1_g5637"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hblhb"]
+atlas = ExtResource("1_g5637")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5d2r"]
+atlas = ExtResource("1_g5637")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouudb"]
+atlas = ExtResource("1_g5637")
+region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ako"]
+atlas = ExtResource("1_g5637")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjcwg"]
+atlas = ExtResource("1_g5637")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtpb5"]
+atlas = ExtResource("1_g5637")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01jv1"]
+atlas = ExtResource("1_g5637")
+region = Rect2(100, 200, 100, 100)
 
 [resource]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hblhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5d2r")
+}],
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouudb")
+}],
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ako")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjcwg")
+}],
 "loop": true,
 "name": &"fight_idle",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtpb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01jv1")
+}],
+"loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 2.0
 }]

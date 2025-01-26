@@ -6,10 +6,14 @@ class_name AttackBubble extends Area2D
 # refs
 @onready var anim: AnimatedSprite2D = $anim
 
+# vars
 var type: Enums.AttackBubbleType
 var speed: float = 25.0
 var shot_direction: int = 1
 var shot_source: Enums.ShotSource = Enums.ShotSource.None
+
+# destroy
+var is_exploding: bool = false
 
 # cons anim names
 const anim_default = &"default"
@@ -23,6 +27,9 @@ func _ready() -> void:
 
 	# play animation
 	anim.play()
+
+	# explode
+	is_exploding = false
 
 
 func _process(delta: float) -> void:
@@ -45,7 +52,11 @@ func set_stats(new_stats: AttackBubbleStats, target_shot_source: Enums.ShotSourc
 
 	# shot source and direction
 	shot_source = target_shot_source
-	shot_direction = -1 if target_shot_source == Enums.ShotSource.ShotWizard else 1
+	shot_direction = 1 if target_shot_source == Enums.ShotSource.ShotWizard else -1
+
+	# switch direction
+	if target_shot_source == Enums.ShotSource.ShotWizard: return
+	self.transform.x *= -1
 
 
 func update_bubble_movement() -> Vector2:
@@ -54,9 +65,23 @@ func update_bubble_movement() -> Vector2:
 	return speed * Vector2(speed * shot_direction, 0.0)
 
 
+func destroy_bubble():
+
+	# look animation
+	anim.set_animation(anim_explode)
+
+	# play animation
+	anim.play()
+
+	# explode
+	is_exploding = true
+
+
+# --
+# signal methods
+
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("destroy bubble")
-	queue_free()
+	self.destroy_bubble()
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -75,9 +100,16 @@ func _on_area_entered(area: Area2D) -> void:
 
 	# destroy both
 	if destroy_both:
-		area.queue_free()
-		self.queue_free()
+		area.destroy_bubble()
+		self.destroy_bubble()
 		return
 
 	# destroy character bubble
-	area.queue_free()
+	area.destroy_bubble()
+
+
+func _on_anim_animation_finished() -> void:
+
+	# only for exploding
+	if not is_exploding: return
+	queue_free()

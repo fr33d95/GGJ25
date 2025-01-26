@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cgfkxnqqcjk7h"]
+
+[ext_resource type="Texture2D" uid="uid://dftbu368n0rns" path="res://art/100xbubbles/fire_bubble_100/fire_bubble_02_move.png" id="1_5ce03"]
+[ext_resource type="Texture2D" uid="uid://3u84torx0x1b" path="res://art/100xbubbles/fire_bubble_100/fire_bubble_03_hit.png" id="2_4fibt"]
+[ext_resource type="Texture2D" uid="uid://ib7fg04rw5ou" path="res://art/100xbubbles/fire_bubble_100/fire_bubble_04_burst.png" id="3_fd7y1"]
+[ext_resource type="Texture2D" uid="uid://dlva1ckpn0nlm" path="res://art/100xbubbles/fire_bubble_100/fire_bubble_05_fade.png" id="4_qi5te"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5ce03")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4fibt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fd7y1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qi5te")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
