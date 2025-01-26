@@ -123,7 +123,7 @@ func _on_upwards_bubble_spawner_timeout() -> void:
 
 	add_child(bubble)
 	
-func upwards_Hit():
+func upwards_hit():
 	current_depth -= depth_decrease_hit;
 	if(current_depth < 0):
 		current_depth = 0;
