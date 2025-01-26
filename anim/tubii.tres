@@ -59,7 +59,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ke35j")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -70,9 +70,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5j40y")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -83,7 +83,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fight_idle",
-"speed": 1.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -92,7 +92,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iye65")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }, {
@@ -103,9 +103,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oq1yj")
 }],
-"loop": true,
+"loop": false,
 "name": &"suffocate",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
