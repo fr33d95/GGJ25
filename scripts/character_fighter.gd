@@ -66,11 +66,18 @@ func hit():
 
 
 # --
+# setter
+
+func set_character_stats():
+	# todo:
+	pass
+
+
+# --
 # signal methods
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("area: ", area)
 
 	# returns
 	if not area is AttackBubble: return
@@ -79,5 +86,4 @@ func _on_area_entered(area: Area2D) -> void:
 	# hit by shot
 	self.hit()
 	area.queue_free()
-
-	print(area.type)
+	

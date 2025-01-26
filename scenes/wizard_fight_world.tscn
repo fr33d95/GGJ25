@@ -12,3 +12,5 @@ position = Vector2(863, 496)
 
 [node name="character_fighter" parent="." instance=ExtResource("3_pnnn8")]
 position = Vector2(222, 504)
+
+[connection signal="the_evil_wizard_is_dead" from="wizard" to="." method="_on_wizard_the_evil_wizard_is_dead"]

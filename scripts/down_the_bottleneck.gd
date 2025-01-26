@@ -2,14 +2,17 @@ extends Node2D
 
 # resources
 @export var main_world: PackedScene
+var fight_world_scene: PackedScene = preload("res://scenes/wizard_fight_world.tscn")
 
 # refs
 @onready var world = $world
 @onready var title = $title_canvas
 @onready var credits = $credits_canvas
 @onready var win = $win_canvas
-#@onready var bgm_player = $BGM_Player
-#@onready var bgm_intro = $BGM_intro
+@onready var bgm_down = $bgm_down
+@onready var bgm_wizard_fight = $bgm_wizard_fight
+@onready var bgm_up = $bgm_up
+
 
 # playing flag
 var is_playing:bool = false
@@ -27,6 +30,9 @@ func _ready() -> void:
 	title.show()
 	win.hide()
 	credits.hide()
+
+	# play down also in title
+	bgm_down.play()
 
 	# is playing
 	is_playing = false
@@ -72,13 +78,6 @@ func start_new_game():
 	# signal connections
 	#world.get_node("intro_world").finished.connect(finished_intro_world)
 
-	# info
-	#world.get_node("intro_world").info()
-
-	# todo: bgm
-	#bgm_title.stop()
-	#bgm_sea1.play()
-
 	# title
 	title.hide()
 	win.hide()
@@ -87,6 +86,46 @@ func start_new_game():
 	# is playing
 	is_playing = true
 
+
+func start_fight_world():
+
+	# todo:
+	# save stats
+
+	print("start the bubble fight world")
+
+	# clean
+	clean_world()
+
+	# world
+	var wizard_fight_world = fight_world_scene.instantiate()
+
+	# start  with intro
+	world.add_child(wizard_fight_world)
+
+	# make signal connections
+	wizard_fight_world.fight_is_now_over_go_up.connect(self.start_up_the_bottle)
+
+	# todo:
+	# overwrite stats
+	#wizard_fight_world.overwrite_character_stats()
+
+	# bgm
+	bgm_down.stop()
+	bgm_wizard_fight.play()
+
+
+func start_up_the_bottle():
+
+	# clean
+	clean_world()
+
+	# todo:
+	# start up the bottle world instantiate
+
+	# bgm
+	bgm_wizard_fight.stop()
+	bgm_up.play()
 
 
 func clean_world():
@@ -108,9 +147,6 @@ func credits_to_title():
 	title.show()
 	credits.hide()
 	win.hide()
-	#bgm_player.stream = load("res://audio/bgm/xxx.mp3")
-	#bgm_player.play()
-	#bgm_intro.play()
 
 
 func win_to_credits(): self.title_to_credits()
@@ -125,6 +161,12 @@ func game_to_title():
 	title.show()
 	credits.hide()
 	win.hide()
+
+	# bgm
+	bgm_down.stop()
+	bgm_wizard_fight.stop()
+	bgm_up.stop()
+	bgm_down.play()
 
 
 func win_game():

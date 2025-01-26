@@ -67,16 +67,11 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Wizard: return
 	if area.shot_source == self.shot_source: return
 
-	# handle bubble input only wizard shots
-	#match self.type:
-	print("hit bubble: ", area.type)
-
-	var destroy_both: bool = false
-
 	# destroy both condition
-	if self.type == Enums.AttackBubbleType.Red and area.type == Enums.AttackBubbleType.Blue: destroy_both = true
-	if self.type == Enums.AttackBubbleType.Blue and area.type == Enums.AttackBubbleType.Green: destroy_both = true
-	if self.type == Enums.AttackBubbleType.Green and area.type == Enums.AttackBubbleType.Red: destroy_both = true
+	var destroy_both: bool = false
+	destroy_both = destroy_both or (self.type == Enums.AttackBubbleType.Red and area.type == Enums.AttackBubbleType.Blue)
+	destroy_both = destroy_both or (self.type == Enums.AttackBubbleType.Blue and area.type == Enums.AttackBubbleType.Green)
+	destroy_both = destroy_both or (self.type == Enums.AttackBubbleType.Green and area.type == Enums.AttackBubbleType.Red)
 
 	# destroy both
 	if destroy_both:

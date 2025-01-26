@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://t0i6libxido2"]
+[gd_scene load_steps=8 format=3 uid="uid://t0i6libxido2"]
 
 [ext_resource type="Script" path="res://scripts/down_the_bottleneck.gd" id="1_71sw5"]
 [ext_resource type="PackedScene" uid="uid://0c8nj0hlr44r" path="res://scenes/title_canvas.tscn" id="1_gkmfn"]
 [ext_resource type="PackedScene" uid="uid://bu4baq1srou4v" path="res://scenes/test_world.tscn" id="2_c7sod"]
 [ext_resource type="PackedScene" uid="uid://c82gvr2i46sbi" path="res://scenes/win_canvas.tscn" id="3_ugpge"]
 [ext_resource type="PackedScene" uid="uid://cnfck5i7gajkb" path="res://scenes/credits_canvas.tscn" id="4_iei0g"]
+[ext_resource type="AudioStream" uid="uid://byk5q7nry83dl" path="res://audio/down.mp3" id="6_7giv3"]
+[ext_resource type="AudioStream" uid="uid://bdssvd40sus0s" path="res://audio/wizard_fight.mp3" id="7_o2my1"]
 
 [node name="down_the_bottleneck" type="Node2D"]
 script = ExtResource("1_71sw5")
@@ -17,3 +19,12 @@ main_world = ExtResource("2_c7sod")
 [node name="credits_canvas" parent="." instance=ExtResource("4_iei0g")]
 
 [node name="title_canvas" parent="." instance=ExtResource("1_gkmfn")]
+
+[node name="bgm_down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7giv3")
+
+[node name="bgm_wizard_fight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_o2my1")
+
+[node name="bgm_up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7giv3")

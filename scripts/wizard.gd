@@ -13,14 +13,19 @@ signal the_evil_wizard_is_dead
 
 # settings
 @export var max_hits: int = 3
+@export var cooldown_times: Array[float] = [2.0, 1.0, 0.5]
 
 # refs
 @onready var anim: AnimatedSprite2D = $anim
 @onready var death_timer: Timer = $death_timer
+@onready var invincible_timer: Timer = $invincible_timer
+@onready var attack_bubble_container: Node2D = $attack_bubble_container
 
 # vars
 var is_dead: bool = false
+var is_invincible: bool = false
 var num_hits: int = 0
+var cooldown_timer: Timer = null
 
 # const anim
 const anim_fight_idle = &"fight_idle"
@@ -38,16 +43,45 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 
 	# test
-	if Input.is_action_just_pressed("test_shot"): spawn_attack_bubble(Enums.AttackBubbleType.None)
+	# if Input.is_action_just_pressed("test_shot"): spawn_attack_bubble(Enums.AttackBubbleType.None)
+	# if Input.is_action_just_pressed("test_shot_wiz_red"): spawn_attack_bubble(Enums.AttackBubbleType.Red)
+	# if Input.is_action_just_pressed("test_shot_wiz_green"): spawn_attack_bubble(Enums.AttackBubbleType.Green)
+	# if Input.is_action_just_pressed("test_shot_wiz_blue"): spawn_attack_bubble(Enums.AttackBubbleType.Blue)
 
-	if Input.is_action_just_pressed("test_shot_wiz_red"): spawn_attack_bubble(Enums.AttackBubbleType.Red)
-	if Input.is_action_just_pressed("test_shot_wiz_green"): spawn_attack_bubble(Enums.AttackBubbleType.Green)
-	if Input.is_action_just_pressed("test_shot_wiz_blue"): spawn_attack_bubble(Enums.AttackBubbleType.Blue)
+	# auto attack
+	self.auto_attack_update()
 
 
 func reset() -> void:
 	num_hits = 0
 	is_dead = false
+
+
+func auto_attack_update():
+
+	# returns
+	if is_dead: return
+
+	# still bubbles
+	if attack_bubble_container.get_child_count(): return
+
+	# no bubbles start cooldown timer
+	start_cooldown_timer()
+
+
+func start_cooldown_timer():
+
+	# start fight
+	if not cooldown_timer == null: return
+
+	# create timer
+	cooldown_timer = Timer.new()
+	add_child(cooldown_timer)
+	cooldown_timer.timeout.connect(self._on_cooldown_timer_timeout)
+
+	# set time
+	cooldown_timer.wait_time = cooldown_times[num_hits]
+	cooldown_timer.start()
 
 
 func spawn_attack_bubble(bubble_id: Enums.AttackBubbleType) -> void:
@@ -61,7 +95,7 @@ func spawn_attack_bubble(bubble_id: Enums.AttackBubbleType) -> void:
 	var attack_bubble = attack_bubble_scene.instantiate()
 
 	# add
-	add_child(attack_bubble)
+	attack_bubble_container.add_child(attack_bubble)
 
 	# settings
 	attack_bubble.set_stats(attack_bubble_stats[bi], Enums.ShotSource.ShotWizard)
@@ -71,12 +105,19 @@ func hit():
 
 	# returns
 	if is_dead: return
+	if is_invincible: 
+		print("wizard is invincible")
+		return
 
 	# add number of hits
 	num_hits += 1
 
 	# hit message
 	print("wizard is hit: ", num_hits, "/", max_hits)
+
+	# make him invincible
+	is_invincible = true
+	invincible_timer.start()
 
 	# death
 	if num_hits >= max_hits: 
@@ -98,7 +139,6 @@ func hit():
 # signal methods
 
 func _on_area_entered(area: Area2D) -> void:
-	print("area: ", area)
 
 	# returns
 	if not area is AttackBubble: return
@@ -108,7 +148,13 @@ func _on_area_entered(area: Area2D) -> void:
 	self.hit()
 	area.queue_free()
 
-	print(area.type)
+
+func _on_cooldown_timer_timeout():
+
+	# spawn attack
+	self.spawn_attack_bubble(Enums.AttackBubbleType.None)
+	cooldown_timer.stop()
+	cooldown_timer.queue_free()
 
 
 func _on_death_timer_timeout() -> void:
@@ -116,3 +162,8 @@ func _on_death_timer_timeout() -> void:
 	# dead emit
 	print("death of wizard after timer")
 	the_evil_wizard_is_dead.emit()
+
+
+func _on_invincible_timer_timeout() -> void:
+	is_invincible = false
+	invincible_timer.stop()

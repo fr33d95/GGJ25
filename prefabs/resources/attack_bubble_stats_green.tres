@@ -7,4 +7,4 @@
 script = ExtResource("1_4x0cv")
 sprite_frames = ExtResource("2_fb8jh")
 attack_bubble_type = 2
-speed = 15.0
+speed = 11.0
