@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnnr3nu4mntx1"]
+[gd_scene load_steps=9 format=3 uid="uid://bnnr3nu4mntx1"]
 
 [ext_resource type="Script" path="res://scripts/wizard.gd" id="1_2b7e2"]
 [ext_resource type="PackedScene" uid="uid://ca4rpme7ri7eb" path="res://prefabs/attack_bubble.tscn" id="2_h6ssr"]
-[ext_resource type="Texture2D" uid="uid://dltnqgc0seb7c" path="res://art/test/test_wiz.png" id="2_pb5qh"]
 [ext_resource type="Script" path="res://scripts/attack_bubble_stats.gd" id="3_7a61b"]
 [ext_resource type="Resource" uid="uid://d2anp18kpymjt" path="res://prefabs/resources/attack_bubble_stats_red.tres" id="4_he2xq"]
 [ext_resource type="Resource" uid="uid://bvdof1gag5y08" path="res://prefabs/resources/attack_bubble_stats_blue.tres" id="5_1uxbk"]
@@ -10,22 +9,20 @@
 [ext_resource type="SpriteFrames" uid="uid://lafq55m24b67" path="res://anim/anim_wizard.tres" id="8_tmnit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj6pm"]
-size = Vector2(128, 128)
+size = Vector2(48, 88)
 
 [node name="wizard" type="Area2D"]
 script = ExtResource("1_2b7e2")
 attack_bubble_scene = ExtResource("2_h6ssr")
 attack_bubble_stats = Array[ExtResource("3_7a61b")]([ExtResource("4_he2xq"), ExtResource("5_1uxbk"), ExtResource("6_fb4lk")])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pb5qh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_vj6pm")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("8_tmnit")
-animation = &"fight_idle"
+animation = &"attack"
 
 [node name="attack_bubble_container" type="Node2D" parent="."]
 
@@ -36,5 +33,6 @@ one_shot = true
 wait_time = 2.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="invincible_timer" to="." method="_on_invincible_timer_timeout"]

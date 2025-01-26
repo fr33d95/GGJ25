@@ -27,6 +27,8 @@ var is_invincible: bool = false
 var num_hits: int = 0
 var cooldown_timer: Timer = null
 
+var actual_anim_state = null
+
 # const anim
 const anim_fight_idle = &"fight_idle"
 const anim_hit = &"hit"
@@ -55,6 +57,15 @@ func _process(_delta: float) -> void:
 func reset() -> void:
 	num_hits = 0
 	is_dead = false
+
+	# look animation
+	anim.set_animation(anim_fight_idle)
+
+	# play animation
+	anim.play()
+
+	# anim state
+	actual_anim_state = anim_fight_idle
 
 
 func auto_attack_update():
@@ -100,6 +111,15 @@ func spawn_attack_bubble(bubble_id: Enums.AttackBubbleType) -> void:
 	# settings
 	attack_bubble.set_stats(attack_bubble_stats[bi], Enums.ShotSource.ShotWizard)
 
+	# look animation
+	anim.set_animation(anim_attack)
+
+	# play animation
+	anim.play()
+
+	# anim state
+	actual_anim_state = anim_attack
+
 
 func hit():
 
@@ -119,6 +139,15 @@ func hit():
 	is_invincible = true
 	invincible_timer.start()
 
+	# hit animation
+	anim.set_animation(anim_hit)
+
+	# play animation
+	anim.play()
+
+	# anim state
+	actual_anim_state = anim_hit
+
 	# death
 	if num_hits >= max_hits: 
 
@@ -127,6 +156,9 @@ func hit():
 
 		# play animation
 		anim.play()
+
+		# anim state
+		actual_anim_state = anim_die
 
 		# death
 		is_dead = true
@@ -140,13 +172,13 @@ func hit():
 
 func _on_area_entered(area: Area2D) -> void:
 
-	# returns
+	# returnstzrrgbr
 	if not area is AttackBubble: return
 	if area.shot_source == Enums.ShotSource.ShotWizard: return
 
 	# hit by shot
 	self.hit()
-	area.queue_free()
+	area.destroy_bubble()
 
 
 func _on_cooldown_timer_timeout():
@@ -167,3 +199,19 @@ func _on_death_timer_timeout() -> void:
 func _on_invincible_timer_timeout() -> void:
 	is_invincible = false
 	invincible_timer.stop()
+
+
+func _on_anim_animation_finished() -> void:
+
+	# returns
+	if actual_anim_state == anim_fight_idle: return
+	if actual_anim_state == anim_die: return
+
+	# look animation
+	anim.set_animation(anim_fight_idle)
+
+	# play animation
+	anim.play()
+
+	# anim state
+	actual_anim_state = anim_fight_idle

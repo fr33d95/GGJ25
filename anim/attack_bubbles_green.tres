@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cwtx3uj67syvp"]
+
+[ext_resource type="Texture2D" uid="uid://dfqpfv8tt3vw4" path="res://art/100xbubbles/poison_bubble_100x/poison_bubble_02.png" id="1_ngcr5"]
+[ext_resource type="Texture2D" uid="uid://cx012rd6tgyfk" path="res://art/100xbubbles/poison_bubble_100x/poison_bubble_02move.png" id="2_710sb"]
+[ext_resource type="Texture2D" uid="uid://bsddxbeybv5bv" path="res://art/100xbubbles/poison_bubble_100x/poison_bubble_03_hit.png" id="3_yr6am"]
+[ext_resource type="Texture2D" uid="uid://b4fgp7kaxf7e2" path="res://art/100xbubbles/poison_bubble_100x/poison_bubble_04_burst.png" id="4_xxwsi"]
+[ext_resource type="Texture2D" uid="uid://c52kkbyb8jr7b" path="res://art/100xbubbles/poison_bubble_100x/poison_bubble_05_fade.png" id="5_4w2im"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ngcr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_710sb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yr6am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xxwsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4w2im")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]

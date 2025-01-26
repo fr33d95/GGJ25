@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://crl3iw6dt4bv2" path="res://prefabs/resources/attack_bubble_stats_green.tres" id="6_a81cl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4gym"]
-size = Vector2(128, 128)
+size = Vector2(40, 88)
 
 [node name="character_fighter" type="Area2D"]
 script = ExtResource("1_tugwc")
@@ -17,6 +17,7 @@ attack_bubble_scene = ExtResource("2_gkx00")
 attack_bubble_stats = Array[ExtResource("3_hr454")]([ExtResource("4_byxo7"), ExtResource("5_rwp5u"), ExtResource("6_a81cl")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 4)
 shape = SubResource("RectangleShape2D_q4gym")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
