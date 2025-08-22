@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnfck5i7gajkb"]
 
-[ext_resource type="Script" path="res://scripts/credits_canvas.gd" id="1_ir165"]
+[ext_resource type="Script" uid="uid://c2fmhnge7sd41" path="res://scripts/credits_canvas.gd" id="1_ir165"]
 [ext_resource type="Texture2D" uid="uid://dv62pleje64nq" path="res://art/credit_image.png" id="2_jrmyf"]
 
 [node name="credits_canvas" type="CanvasLayer"]

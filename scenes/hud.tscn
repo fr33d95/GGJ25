@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjmp4x4a2k0fe"]
 
-[ext_resource type="Script" path="res://scenes/oxygen.gd" id="1_2xcis"]
+[ext_resource type="Script" uid="uid://6ehkkr5so0v8" path="res://scripts/oxygen.gd" id="1_2xcis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyubq"]
 

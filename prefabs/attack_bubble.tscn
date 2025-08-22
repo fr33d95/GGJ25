@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ca4rpme7ri7eb"]
 
-[ext_resource type="Script" path="res://scripts/attack_bubble.gd" id="1_f8tth"]
+[ext_resource type="Script" uid="uid://cwn7t53ym77b8" path="res://scripts/attack_bubble.gd" id="1_f8tth"]
 [ext_resource type="SpriteFrames" uid="uid://cwtx3uj67syvp" path="res://anim/attack_bubbles_green.tres" id="2_ggo3s"]
 [ext_resource type="AudioStream" uid="uid://c1cncm4y6ls2u" path="res://audio/bubble_sound_explode.ogg" id="3_mwadl"]
 

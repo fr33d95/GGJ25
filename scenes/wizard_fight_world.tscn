@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bltrbd3dxdj8j"]
 
-[ext_resource type="Script" path="res://scripts/wizard_fight_world.gd" id="1_wyqjj"]
+[ext_resource type="Script" uid="uid://bausfp1blmpk" path="res://scripts/wizard_fight_world.gd" id="1_wyqjj"]
 [ext_resource type="PackedScene" uid="uid://bnnr3nu4mntx1" path="res://prefabs/wizard.tscn" id="2_prq4b"]
 [ext_resource type="Texture2D" uid="uid://biacin6rwo4qo" path="res://art/bottle_bottom.png" id="2_vxi8u"]
 [ext_resource type="PackedScene" uid="uid://ds6hie2eixwyp" path="res://prefabs/character_fighter.tscn" id="3_pnnn8"]

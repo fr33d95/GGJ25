@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxltdhox1g3mu"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_vy0yb"]
+[ext_resource type="Script" uid="uid://cexxdgkwvule1" path="res://scripts/player.gd" id="1_vy0yb"]
 [ext_resource type="Texture2D" uid="uid://dcoavoju561wf" path="res://art/spritesheet_tubii.png" id="2_06evk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8krdg"]

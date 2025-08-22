@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbnb4guvtv708"]
 
-[ext_resource type="Script" path="res://scripts/credits_canvas.gd" id="1_arg0g"]
+[ext_resource type="Script" uid="uid://c2fmhnge7sd41" path="res://scripts/credits_canvas.gd" id="1_arg0g"]
 [ext_resource type="LabelSettings" uid="uid://6630muvpww20" path="res://themes/label_settings_title.tres" id="1_h0qf5"]
 
 [node name="lose_canvas" type="CanvasLayer"]

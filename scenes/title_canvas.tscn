@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0c8nj0hlr44r"]
 
-[ext_resource type="Script" path="res://scripts/title_canvas.gd" id="1_rng1i"]
+[ext_resource type="Script" uid="uid://c0ynll27bts7a" path="res://scripts/title_canvas.gd" id="1_rng1i"]
 [ext_resource type="Texture2D" uid="uid://ce1f1oky5wc6c" path="res://art/title_image.png" id="2_ph40a"]
 
 [node name="title_canvas" type="CanvasLayer"]

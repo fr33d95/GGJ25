@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7m5pd53heqxl"]
 
 [ext_resource type="Texture2D" uid="uid://c22xtoihecqm0" path="res://art/Intro_frame_10.png" id="1_047jv"]
-[ext_resource type="Script" path="res://scripts/intro_canvas.gd" id="1_arpei"]
+[ext_resource type="Script" uid="uid://vm76e23ieep6" path="res://scripts/intro_canvas.gd" id="1_arpei"]
 
 [node name="introCanvas" type="CanvasLayer"]
 script = ExtResource("1_arpei")

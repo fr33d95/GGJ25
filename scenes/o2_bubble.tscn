@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://s3k1nc43q6st"]
 
-[ext_resource type="Script" path="res://scripts/o_2_bubble.gd" id="1_ug5mm"]
+[ext_resource type="Script" uid="uid://d1xqsgt6kixje" path="res://scripts/o_2_bubble.gd" id="1_ug5mm"]
 [ext_resource type="Texture2D" uid="uid://7dk8auojgvua" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_01_idle.png" id="2_67lpf"]
 [ext_resource type="Texture2D" uid="uid://ve6a0tdakesy" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_03-hit.png" id="3_ddh87"]
 [ext_resource type="Texture2D" uid="uid://dv6co3w7616qv" path="res://art/100xbubbles/wind_oxy_BUBBLE_100/wind_mag_04_burst.png" id="4_qf7f2"]

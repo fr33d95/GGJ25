@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://t0i6libxido2"]
 
-[ext_resource type="Script" path="res://scripts/down_the_bottleneck.gd" id="1_71sw5"]
+[ext_resource type="Script" uid="uid://cyq5q56e4lypm" path="res://scripts/down_the_bottleneck.gd" id="1_71sw5"]
 [ext_resource type="PackedScene" uid="uid://0c8nj0hlr44r" path="res://scenes/title_canvas.tscn" id="1_gkmfn"]
 [ext_resource type="PackedScene" uid="uid://vr4abtws04v4" path="res://scenes/bottle_world.tscn" id="2_1ceb7"]
 [ext_resource type="PackedScene" uid="uid://dbnb4guvtv708" path="res://scenes/lose_canvas.tscn" id="3_skhhb"]

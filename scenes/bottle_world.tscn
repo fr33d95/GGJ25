@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://vr4abtws04v4"]
 
-[ext_resource type="Script" path="res://scripts/bottle_world.gd" id="1_gn8dh"]
+[ext_resource type="Script" uid="uid://bayhuhd186bap" path="res://scripts/bottle_world.gd" id="1_gn8dh"]
 [ext_resource type="PackedScene" uid="uid://s3k1nc43q6st" path="res://scenes/o2_bubble.tscn" id="2_4nhv4"]
 [ext_resource type="PackedScene" uid="uid://cds01lpxp8wcc" path="res://scenes/upwards_bubble.tscn" id="3_08umx"]
 [ext_resource type="Texture2D" uid="uid://pwqarrodugd6" path="res://art/BG_swim_bottle.png" id="4_61p3d"]
